@@ -1,0 +1,3 @@
+[submodule "ViningLab/CannabisPangenome"]
+	path = ViningLab/CannabisPangenome
+	url = https://github.com/ViningLab/CannabisPangenome.git
