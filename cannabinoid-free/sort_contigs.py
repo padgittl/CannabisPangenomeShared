@@ -17,7 +17,7 @@ def main():
     df = pd.concat((counts, sizes.loc[counts.index,:]), axis=1)
     df[2] = df[0]/np.log(df[1])
     df.columns = 'exclusive_bp', 'total_bp', 'relevance'
-    df.index.columns = 'contig'
+    df.index.name = 'contig'
     df.sort_values('relevance', ascending=False, inplace=True)
     df.to_csv(sys.stdout, sep='\t')
 
