@@ -1,13 +1,24 @@
 import numpy as np
 import pandas as pd
 import sys
+import pysam
 from argparse import ArgumentParser
+from collections import Counter
+
+EH23A_CHROMOSOMES = ['EH23a.chr1', 'EH23a.chr2', 'EH23a.chr3', 'EH23a.chr4',
+                     'EH23a.chr5', 'EH23a.chr6', 'EH23a.chr7', 'EH23a.chr8',
+                     'EH23a.chr9', 'EH23a.chrX']
 
 def parse_arguments():
     parser = ArgumentParser(description='sort contigs')
     parser.add_argument('counts')
     parser.add_argument('sizes')
+    parser.add_argument('alignment')
     return parser.parse_args()
+
+def count_alignments(alignment_file):
+    return Counter((a.query_name, alignment_file.getrname(a.reference_id))
+                   for a in alignment_file if a.mapping_quality >= 60)
 
 
 def main():
@@ -19,7 +30,13 @@ def main():
     df.columns = 'kmers_bp', 'total_bp', 'relevance'
     df.index.name = 'contig'
     df.sort_values('relevance', ascending=False, inplace=True)
-    df.loc[:,('kmers_bp', 'total_bp')].to_csv(sys.stdout, sep='\t')
+    with pysam.AlignmentFile(args.alignment) as af:
+        alignment_counts = count_alignments(af)
+    for chrom in EH23A_CHROMOSOMES:
+        df[chrom] = 0
+        for contig in df.index:
+            df.loc[contig, chrom] = alignment_counts[(contig, chrom)]
+    df.loc[:,['kmers_bp', 'total_bp']+EH23A_CHROMOSOMES].to_csv(sys.stdout, sep='\t')
 
 if __name__  == '__main__':
     main()
