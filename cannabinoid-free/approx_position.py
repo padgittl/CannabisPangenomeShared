@@ -18,3 +18,6 @@ def main():
             (a.query_name==args.contig,
              af.getrname(a.reference_id)==args.chrom,
              a.mapping_quality>=60))))
+
+if __name__ == '__main__':
+    main()
