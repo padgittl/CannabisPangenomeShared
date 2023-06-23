@@ -15,7 +15,7 @@ def main():
     counts = pd.read_table(args.counts, header=None, index_col=1)
     sizes = pd.read_table(args.sizes, header=None, index_col=0)
     df = pd.concat((counts, sizes.loc[counts.index,:]), axis=1)
-    df[2] = sorted[0]/np.log(sorted[1])
+    df[2] = df[0]/np.log(df[1])
     df.columns = 'exclusive_bp', 'total_bp', 'relevance'
     df.index.columns = 'contig'
     df.sort_values('relevance', ascending=False, inplace=True)
