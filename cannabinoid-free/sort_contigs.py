@@ -19,7 +19,7 @@ def main():
     df.columns = 'kmers_bp', 'total_bp', 'relevance'
     df.index.name = 'contig'
     df.sort_values('relevance', ascending=False, inplace=True)
-    df.to_csv(sys.stdout, sep='\t')
+    df.loc[:,('kmers_bp', 'total_bp')].to_csv(sys.stdout, sep='\t')
 
 if __name__  == '__main__':
     main()
