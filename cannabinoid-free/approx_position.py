@@ -20,8 +20,8 @@ def main():
              af.getrname(a.reference_id)==args.chrom,
              a.mapping_quality>=60)))
     if args.size:
-        start = center - args.size / 2
-        end = center + args.size / 2
+        start = int(center - args.size / 2)
+        end = int(center + args.size / 2)
         print('start\tcenter\tend')
         print(f'{start}\t{center}\t{end}')
     else:
