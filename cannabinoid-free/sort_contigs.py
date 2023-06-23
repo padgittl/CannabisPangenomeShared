@@ -32,11 +32,8 @@ def main():
     df.sort_values('relevance', ascending=False, inplace=True)
     with pysam.AlignmentFile(args.alignment) as af:
         alignment_counts = count_alignments(af)
-    for chrom in EH23A_CHROMOSOMES:
-        df[chrom] = 0
-        for contig in df.index:
-            df.loc[contig, chrom] = alignment_counts[(contig, chrom)]
-    df.loc[:,['kmers_bp', 'total_bp']+EH23A_CHROMOSOMES].to_csv(sys.stdout, sep='\t')
+    df['chrom'] = tuple(sorted((alignment_counts[(contig, chrom)], chrom) for chrom in EH23A_CHROMOSOMES)[0][1] for contig in df.index)
+    df.loc[:,['kmers_bp', 'total_bp', 'chrom']].to_csv(sys.stdout, sep='\t')
 
 if __name__  == '__main__':
     main()
