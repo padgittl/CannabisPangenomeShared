@@ -7,6 +7,7 @@ def parse_arguments():
     parser = ArgumentParser(description='sort contigs')
     parser.add_argument('counts')
     parser.add_argument('sizes')
+    return parser.parse_args()
 
 
 def main():
