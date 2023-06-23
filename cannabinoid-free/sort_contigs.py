@@ -1,0 +1,25 @@
+import numpy as np
+import pandas as pd
+import sys
+from argparse import ArgumentParser
+
+def parse_arguments():
+    parser = ArgumentParser(description='sort contigs')
+    parser.add_argument('counts')
+    parser.add_argument('sizes')
+
+
+def main():
+    args = parse_arguments()
+    counts = pd.read_table(args.counts, header=None, index_col=1)
+    sizes = pd.read_table(args.sizes, header=None, index_col=0)
+    df = pd.concat(counts, sizes[counts.index,:])
+    df[2] = sorted[0]/np.log(sorted[1])
+    df.columns = 'exclusive_bp', 'total_bp', 'relevance'
+    df.index.columns = 'contig'
+    df.sort_values('relevance', ascending=False, inplace=True)
+    df.to_csv(sys.stdout, sep='\t')
+
+if __name__  == '__main__':
+    main()
+  
