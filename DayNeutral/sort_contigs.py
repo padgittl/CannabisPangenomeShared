@@ -9,11 +9,17 @@ EH23A_CHROMOSOMES = ['EH23a.chr1', 'EH23a.chr2', 'EH23a.chr3', 'EH23a.chr4',
                      'EH23a.chr5', 'EH23a.chr6', 'EH23a.chr7', 'EH23a.chr8',
                      'EH23a.chr9', 'EH23a.chrX']
 
+EH23B_CHROMOSOMES = ['EH23b.chr1', 'EH23b.chr2', 'EH23b.chr3', 'EH23b.chr4',
+                     'EH23b.chr5', 'EH23b.chr6', 'EH23b.chr7', 'EH23b.chr8',
+                     'EH23b.chr9', 'EH23b.chrX']
+
+
 def parse_arguments():
     parser = ArgumentParser(description='sort contigs')
     parser.add_argument('kmers')
     parser.add_argument('sizes')
     parser.add_argument('alignment')
+    parser.add_argument('--hap', choices=('a', 'b'))
     return parser.parse_args()
 
 def count_alignments(alignment_file):
@@ -32,8 +38,14 @@ def main():
     df.sort_values('relevance', ascending=False, inplace=True)
     with pysam.AlignmentFile(args.alignment) as af:
         alignment_counts = count_alignments(af)
+    if args.hap == 'a':
+        chromosomes = EH23A_CHROMOSOMES
+    elif args.hap == 'b':
+        chromosomes = EH23B_CHROMOSOMES
+    else:
+        raise RuntimeError('invalid hap')
     df['chrom'] = tuple(sorted(((alignment_counts[(contig, chrom)], chrom)
-                                for chrom in EH23A_CHROMOSOMES), reverse=True)[0][1]
+                                for chrom in chromosomes), reverse=True)[0][1]
                                 for contig in df.index)
     df.loc[:,['kmers_bp', 'total_bp', 'chrom']].to_csv(sys.stdout, sep='\t')
 
