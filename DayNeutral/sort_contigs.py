@@ -19,7 +19,7 @@ def parse_arguments():
     parser.add_argument('kmers')
     parser.add_argument('sizes')
     parser.add_argument('alignment')
-    parser.add_argument('--hap', choices=('a', 'b'))
+    parser.add_argument('--hap', choices=('a', 'b'), default='a')
     return parser.parse_args()
 
 def count_alignments(alignment_file):
