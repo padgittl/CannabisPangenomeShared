@@ -14,11 +14,11 @@ def parse_arguments():
 def main():
     args = parse_arguments()
     with pysam.AlignmentFile(args.alignment) as af:
-        center = median(int(a.reference_start + len(a.query_sequence)/2)
+        center = int(median(int(a.reference_start + len(a.query_sequence)/2)
             for a in af if all(
             (a.query_name==args.contig,
              af.getrname(a.reference_id)==args.chrom,
-             a.mapping_quality>=60)))
+             a.mapping_quality>=60))))
     if args.size:
         start = int(center - args.size / 2)
         end = int(center + args.size / 2)
