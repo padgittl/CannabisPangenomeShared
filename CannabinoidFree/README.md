@@ -3,7 +3,7 @@
 Below, _CF k-mers_ refers to the set of k-mers present in all 9 cannabinoid-free (CF) genomes (BH4, I3, I52, I53, I59, I61, I68, I75, I78), but absent from all other cannabis genomes in the current pangenome
 
 Below are details of identifying cannabinoid-free contigs with dense clusters of CF k-mers,
-then localizing contigs to chromosomes of EH23a. The results are not yet comprehensive (only top 10 contigs from each CF genome are shown), provide useful context and illustrate the most obvious characteristics of CF k-mers.
+then localizing contigs to chromosomes of EH23a. The results are not yet comprehensive (only top 9 contigs from each CF genome are shown), provide useful context and illustrate the most obvious characteristics of CF k-mers.
 
 The results of this dataset are broad/approximate mappgings of CF contigs to EH23a chromosomes. For more fine localization of k-mers at specific loci, refer to the browser tracks found at:
 ```
@@ -26,8 +26,8 @@ cannabinoid-free/
     *.kmers
   EH23a_mapping/
     *.tsv
-    *_top10.tsv
-    *_top10.bed
+    *_top9.tsv
+    *_top9.bed
     *.pdf
     *.svg
   sort_contigs.py
@@ -48,16 +48,16 @@ The `.tsv` files are, for each CF genome, a table with a row for each contig and
 - **total_bp**: total size of contig
 - **chrom**: EH23a chromosome matching this contig
 
-The `_top10.tsv` files are the top 10 rows of each `*.tsv` file, with 3 additional columns:
+The `_top9.tsv` files are the top 9 contigs of each `*.tsv` file, with 3 additional columns:
 - **approx_start**: approximate start position of the contig's mapping to EH23a
 - **approx_center**: approximate center position
 - **approx_end**: approximate end position
 
-The `.bed`, `.pdf`, and `.svg` files are used to visualize the data in the `*_top10.tsv` files, see below.
+The `.bed`, `.pdf`, and `.svg` files are used to visualize the data in the `*_top9.tsv` files, see below.
 
 ### scripts
 `sort_contigs.py` contains logic used to order contigs and generate the `*.tsv` files
-`approx_position.py` contains logic used to generate approx coordinates for contigs in `*_top10.tsv` files
+`approx_position.py` contains logic used to generate approx coordinates for contigs in `*_top9.tsv` files
 
 ## Results
 
