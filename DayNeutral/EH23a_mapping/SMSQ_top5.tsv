@@ -1,3 +1,3 @@
-contig	kmers_bp	total_bp	chrom
-SMSQ.00009534	31	579037	EH23a.chr1
-SMSQ.00009536	31	701117	EH23a.chr1
+contig	kmers_bp	total_bp	chrom	approx_start	approx_center	approx_end
+SMSQ.00009534	31	579037	EH23a.chr1	680371	969890	1259408
+SMSQ.00009536	31	701117	EH23a.chr1	60218	410777	761335
