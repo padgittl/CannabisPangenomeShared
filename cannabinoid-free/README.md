@@ -24,7 +24,7 @@ cannabinoid-free/
     *.chromsizes
   kmers/
     *.kmers
-  EH23a-mapping/
+  EH23a_mapping/
     *.tsv
     *_top10.tsv
     *_top10.bed
@@ -41,7 +41,7 @@ For each CF genome, the `.chromsizes` file contains the size of each contig in B
 ### kmers
 For each CF genome, the `.kmers` file contains the area in bp occupied by CF k-mers
 
-### EH23A-mapping
+### EH23a_mapping
 The `.tsv` files are, for each CF genome, a table with a row for each contig and columns:
 - **contig**: the contig ID
 - **kmers_bp**: bp occupied by CF k-mers
@@ -63,14 +63,14 @@ The `.bed`, `.pdf`, and `.svg` files are used to visualize the data in the `*_to
 
 ### Primary hits
 Across all CF genomes there are signals mapping to EH23a.chrX, especially in the region from 10 Mb to 30 Mb. This seems to be strong support for the importance of the PT4 locus.
-![chrX](EH23a-mapping/EH23a.chrX.svg)
+![chrX](EH23a_mapping/EH23a.chrX.svg)
 
 All CF genomes except I75 have signals mapping to EH23a.chr7.
-![chr7](EH23a-mapping/EH23a.chr7.svg)
+![chr7](EH23a_mapping/EH23a.chr7.svg)
 
 ### Secondary hits
 There seem to be consistent signals in several CF genomes on EH12a.chr4 around 70 Mb:
-![chr4](EH23a-mapping/EH23a.chr4.svg)
+![chr4](EH23a_mapping/EH23a.chr4.svg)
 
 And on chr6 around 10 Mb:
-![chr6](EH23a-mapping/EH23a.chr6.svg)
+![chr6](EH23a_mapping/EH23a.chr6.svg)
