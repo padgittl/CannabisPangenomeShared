@@ -11,7 +11,7 @@ EH23A_CHROMOSOMES = ['EH23a.chr1', 'EH23a.chr2', 'EH23a.chr3', 'EH23a.chr4',
 
 def parse_arguments():
     parser = ArgumentParser(description='sort contigs')
-    parser.add_argument('counts')
+    parser.add_argument('kmers')
     parser.add_argument('sizes')
     parser.add_argument('alignment')
     return parser.parse_args()
@@ -23,9 +23,9 @@ def count_alignments(alignment_file):
 
 def main():
     args = parse_arguments()
-    counts = pd.read_table(args.counts, header=None, index_col=1)
+    kmers = pd.read_table(args.kmers, header=None, index_col=1)
     sizes = pd.read_table(args.sizes, header=None, index_col=0)
-    df = pd.concat((counts, sizes.loc[counts.index,:]), axis=1)
+    df = pd.concat((kmers, sizes.loc[kmers.index,:]), axis=1)
     df[2] = df[0]/np.log(df[1])
     df.columns = 'kmers_bp', 'total_bp', 'relevance'
     df.index.name = 'contig'
