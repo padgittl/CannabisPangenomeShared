@@ -5,7 +5,7 @@ import numpy as np
 from math import prod, floor
 from scipy.stats import hypergeom
 
-COL_COLOR_PALETTE = 'mako_r'
+COL_COLOR_PALETTE = 'rocket_r'
 
 def col_values(orthogroup_df, contours=None):
     """Calculate collection curve
