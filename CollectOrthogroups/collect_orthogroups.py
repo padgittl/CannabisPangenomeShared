@@ -88,6 +88,10 @@ def main():
     palette = COL_COLOR_PALETTE
     ortho = pd.read_table('Phylogenetic_Hierarchical_Orthogroups/N3.tsv',
                       index_col=0, dtype=str).iloc[:,2:].notna()
+    ortho = ortho.drop(
+        ['FragariaVesca', 'LotusJaponicus', 'MalusDomestica', 'PrunusPersica', 'RosaChinensis'],
+        axis=1
+    )
     col_df = pd.DataFrame(col_values(ortho, contours=contours),
                               columns=('n_genomes', 'n_orthogroups', 'sequence'))
     col_df.to_csv('Csativa-collect-orthogroups.tsv', index=False, sep='\t')
