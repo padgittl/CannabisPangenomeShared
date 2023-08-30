@@ -93,6 +93,8 @@ def main():
     col_df.to_csv('Csativa-collect-orthogroups.tsv', index=False, sep='\t')
     col_plot(col_df, 'Csativa-collect-orthogroups.svg',
                  palette=(palette if contours else sns.color_palette(palette, n_colors=2)))
+    col_plot(col_df, 'Csativa-collect-orthogroups.pdf',
+                 palette=(palette if contours else sns.color_palette(palette, n_colors=2)))
 
 if __name__ == '__main__':
     main()
