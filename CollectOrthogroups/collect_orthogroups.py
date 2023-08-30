@@ -62,7 +62,7 @@ def col_plot(plotting_data, output, title: str = 'Collection curve',
         location of plot legend, e.g. 'upper left', 'best', or 'outside' [best]
     """
 
-    ax = sns.lineplot(x='n_genomes', y='n_kmers', hue='sequence',
+    ax = sns.lineplot(x='n_genomes', y='n_orthogroups', hue='sequence',
                       data=plotting_data, linewidth=linewidth,
                       palette=palette, alpha=alpha)
     ax.set_title(title)
