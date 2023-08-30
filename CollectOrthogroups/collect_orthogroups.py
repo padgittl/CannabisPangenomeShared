@@ -34,12 +34,65 @@ def col_values(orthogroup_df, contours=None):
         yield n_genomes, sum(prod((s-n)/(g-n) for n in range(n_genomes))*score_dist[s]
             for s in range(1, g+1)), 'core'
 
+
+def col_plot(plotting_data, output, title: str = 'Collection curve',
+             linewidth: int = 3, palette=COL_COLOR_PALETTE, alpha: float = 1.0,
+             width: float = 4.0, height: float = 3.0, legend_loc='best'):
+    """Draw a plot of the collection curve
+
+    Parameters
+    ----------
+    plotting_data : DataFrame
+        data frame of plotting data to be passed to sns.lineplot
+    output
+        path to output file
+    title : str
+        plot title [Collection curve]
+    linewidth : int
+        line width [3]
+    palette
+        argument sent to seaborn to be used as color palette [mako_r]
+    alpha : float
+        opacity of plot lines [1.0]
+    width : float
+        width of plot in inches [4.0]
+    height : float
+        height of plot in inches [3.0]
+    legend_loc : str
+        location of plot legend, e.g. 'upper left', 'best', or 'outside' [best]
+    """
+
+    ax = sns.lineplot(x='n_genomes', y='n_kmers', hue='sequence',
+                      data=plotting_data, linewidth=linewidth,
+                      palette=palette, alpha=alpha)
+    ax.set_title(title)
+    ax.set_ylim(bottom=0)
+    if legend_loc == 'outside':
+        leg = ax.legend(bbox_to_anchor=(1.02, 1), loc='upper left',
+                        borderaxespad=0)
+    else:
+        leg = ax.legend(loc=legend_loc)
+    for line in leg.get_lines():
+        line.set_linewidth(linewidth)
+        line.set_alpha(alpha)
+    fig = ax.get_figure()
+    fig.set_figwidth(width)
+    fig.set_figheight(height)
+    fig.tight_layout()
+    fig.savefig(output)
+    fig.clf()
+
+
 def main():
+    contours = None
+    palette = COL_COLOR_PALETTE
     ortho = pd.read_table('Phylogenetic_Hierarchical_Orthogroups/N3.tsv',
                       index_col=0, dtype=str).iloc[:,2:].notna()
-    col_df = pd.DataFrame(col_values(ortho, contours=None),
-                              columns=('n_genomes', 'n_kmers', 'sequence'))
-    print(col_df)
+    col_df = pd.DataFrame(col_values(ortho, contours=contours),
+                              columns=('n_genomes', 'n_orthogroups', 'sequence'))
+    col_df.to_csv('Csativa-collect-orthogroups.tsv', index=False, sep='\t')
+    col_plot(col_df, 'Csativa-collect-orthogroups.svg',
+                 palette=(palette if contours else sns.color_palette(palette, n_colors=2)))
 
 if __name__ == '__main__':
     main()
