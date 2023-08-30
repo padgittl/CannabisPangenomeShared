@@ -40,3 +40,6 @@ def main():
     col_df = pd.DataFrame(col_values(ortho, contours=None),
                               columns=('n_genomes', 'n_kmers', 'sequence'))
     print(col_df)
+
+if __name__ == '__main__':
+    main()
