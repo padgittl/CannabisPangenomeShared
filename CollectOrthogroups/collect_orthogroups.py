@@ -25,14 +25,34 @@ def col_values(orthogroup_df, contours=None):
     g = len(orthogroup_df.columns)
     score_dist = Counter(sum(score) for _, score in orthogroup_df.iterrows())
     for n_genomes in range(1, g+1):
-        yield n_genomes, sum((1-prod((g-s-n)/(g-n) for n in range(n_genomes)))*score_dist[s]
-            for s in range(1, g+1)), 'pan'
+        yield (
+            n_genomes,
+            sum(
+                (1-prod((g-s-n)/(g-n) for n in range(n_genomes)))*score_dist[s]
+                for s in range(1, g+1)
+            ),
+            'pan'
+        )
         if contours:
             for c in contours:
-                yield n_genomes, sum((hypergeom.sf(floor(c/100*n_genomes), g, s, n_genomes))*score_dist[s]
-                    for s in range(1, g+1)), f'{c}%'
-        yield n_genomes, sum(prod((s-n)/(g-n) for n in range(n_genomes))*score_dist[s]
-            for s in range(1, g+1)), 'core'
+                yield (
+                    n_genomes,
+                    sum(
+                        (
+                            hypergeom.sf(floor(c/100*n_genomes), g, s, n_genomes)
+                        )*score_dist[s]
+                        for s in range(1, g+1)
+                    ),
+                    f'{c}%'
+                )
+        yield (
+            n_genomes,
+            sum(
+                prod((s-n)/(g-n) for n in range(n_genomes))*score_dist[s]
+                for s in range(1, g+1)
+            ),
+            'core'
+        )
 
 
 def col_plot(plotting_data, output, title: str = 'Collection curve',
