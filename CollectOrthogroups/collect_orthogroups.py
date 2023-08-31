@@ -24,6 +24,7 @@ def col_values(orthogroup_df, contours=None):
 
     g = len(orthogroup_df.columns)
     score_dist = Counter(sum(score) for _, score in orthogroup_df.iterrows() if sum(score)>1)
+    # score_dist = Counter(sum(score) for _, score in orthogroup_df.iterrows())
     for n_genomes in range(1, g+1):
         yield (
             n_genomes,
@@ -106,14 +107,32 @@ def col_plot(plotting_data, output, title: str = 'Collection curve',
 def main():
     contours = None
     palette = COL_COLOR_PALETTE
-    ortho = pd.read_table('Phylogenetic_Hierarchical_Orthogroups/N3.tsv',
-                      index_col=0, dtype=str).iloc[:,2:].notna()
+    ortho = pd.read_table(
+        'Phylogenetic_Hierarchical_Orthogroups/N3.tsv',
+        index_col=0,
+        dtype=str
+    ).iloc[:,2:].notna()
     ortho = ortho.drop(
         ['FragariaVesca', 'LotusJaponicus', 'MalusDomestica', 'PrunusPersica', 'RosaChinensis'],
         axis=1
     )
-    col_df = pd.DataFrame(col_values(ortho, contours=contours),
-                              columns=('n_genomes', 'n_orthogroups', 'sequence'))
+    # singletons = pd.read_table(
+    #     'Orthogroups/Orthogroups_UnassignedGenes.tsv',
+    #     index_col=0,
+    #     dtype=str
+    # ).notna()
+    # singletons = singletons.drop(
+    #     ['FragariaVesca', 'LotusJaponicus', 'MalusDomestica', 'PrunusPersica', 'RosaChinensis'],
+    #     axis=1
+    # )
+    # ortho = pd.concat((ortho, singletons), axis=0)
+    ortho = ortho.loc[:,[
+        'AH3Ma', 'AH3Mb', 'BCMa', 'BCMb', 'BOAXa', 'BOAXb', 'COFBa', 'COFBb', 'COSVa', 'COSVb', 'DPFBa', 'DPFBb', 'DPSVa', 'DPSVb', 'EH23a', 'EH23b', 'FCS1a', 'FCS1b', 'GERv1a', 'GERv1b', 'GRMa', 'GRMb', 'H3S1a', 'H3S1b', 'H3S7a', 'H3S7b', 'KCDv1a', 'KCDv1b', 'KOMPa', 'KOMPb', 'MBFBa', 'MBFBb', 'MBSVa', 'MBSVb', 'MM3v1a', 'MM3v1b', 'NLv1a', 'NLv1b', 'OFBa', 'OFBb', 'PPFBa', 'PPFBb', 'S8Ha', 'S8Hb', 'SAN2a', 'SAN2b', 'SDFBa', 'SDFBb', 'SHH5a', 'SHH5b', 'SKFBa', 'SKFBb', 'SN1v3a', 'SN1v3b', 'SODLa', 'SODLb', 'STHa', 'STHb', 'SVA12a', 'SVA12b', 'SVA6a', 'SVA6b', 'SZFBa', 'SZFBb', 'TKFBa', 'TKFBb', 'TWFBa', 'TWFBb', 'TWSVa', 'TWSVb', 'UFBa', 'UFBb', 'WCFBa', 'WCFBb', 'WHWa', 'WHWb', 'YMv2a', 'YMv2b'
+    ]]
+    col_df = pd.DataFrame(
+        col_values(ortho, contours=contours),
+        columns=('n_genomes', 'n_orthogroups', 'sequence')
+    )
     col_df.to_csv('Csativa-collect-orthogroups.tsv', index=False, sep='\t')
     col_plot(col_df, 'Csativa-collect-orthogroups.svg',
                  palette=(palette if contours else sns.color_palette(palette, n_colors=2)))
