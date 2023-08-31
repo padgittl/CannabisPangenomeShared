@@ -23,7 +23,7 @@ def col_values(orthogroup_df, contours=None):
     """
 
     g = len(orthogroup_df.columns)
-    score_dist = Counter(sum(score) for _, score in orthogroup_df.iterrows())
+    score_dist = Counter(sum(score) for _, score in orthogroup_df.iterrows() if sum(score)>1)
     for n_genomes in range(1, g+1):
         yield (
             n_genomes,
