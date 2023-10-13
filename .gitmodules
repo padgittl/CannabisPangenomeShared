@@ -1,3 +1,9 @@
-[submodule "EH23_Expression"]
-	path = EH23_Expression
+[submodule "ViningLab/CannabisPangenome"]
+	path = ViningLab/CannabisPangenome
+	url = https://github.com/ViningLab/CannabisPangenome.git
+[submodule "padgittl/CannabisPangenomeTerpeneSynthases"]
+	path = padgittl/CannabisPangenomeTerpeneSynthases
+	url = git@github.com:padgittl/CannabisPangenomeTerpeneSynthases.git
+[submodule "jkitony/EH23_Expression"]
+	path = jkitony/EH23_Expression
 	url = git@github.com:jkitony/EH23_Expression.git
