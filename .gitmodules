@@ -7,6 +7,3 @@
 [submodule "jkitony/EH23_Expression"]
 	path = jkitony/EH23_Expression
 	url = git@github.com:jkitony/EH23_Expression.git
-[submodule "padgittl/CannabisPangenomeTransposableElements"]
-	path = padgittl/CannabisPangenomeTransposableElements
-	url = git@github.com:padgittl/CannabisPangenomeTransposableElements.git
