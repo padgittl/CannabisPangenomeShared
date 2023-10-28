@@ -12,5 +12,5 @@ Figures:
 1. Disease resistance Kelly V
 
 Figure 1 binary colors:
-- `"#1E90FF04"`
-- `"#FFA50004"`
+- `"#1E90FF"`
+- `"#FFA500"`
