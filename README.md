@@ -10,3 +10,7 @@ Figures:
 1. The I-series/cannabinoid free Todd
 1. Autoflower/clock/expression/Varin? Todd
 1. Disease resistance Kelly V
+
+Figure 1 binary colors:
+- `"#1E90FF04"`
+- `"#FFA50004"`
