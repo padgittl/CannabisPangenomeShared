@@ -7,6 +7,7 @@
 # Imports ======================================================================
 
 import shutil
+import os.path
 from argparse import ArgumentParser
 from multiprocessing import Pool
 from functools import partial
@@ -23,14 +24,22 @@ def check_minimap2():
 
 
 def splice_align(genome, cds, outdir='.'):
-    run(('minimap2', '-t', '1', ))
+    run(('minimap2', '-t', '1', '--splice',
+         '-o', os.path.join(
+             outdir,
+            os.path.basename(genome).replace('fasta.gz', 'paf')
+         ),
+         genome,
+         cds
+        )
+    )
 
 
 def parse_arguments():
     parser = ArgumentParser(description='align CDS sequences to scaffolded genomes')
     parser.add_argument('outdir', help='directory for output files')
     parser.add_argument('--genomes', nargs='+', required=True)
-    parser.add_argument('--cds', nargs='+', required=True)
+    parser.add_argument('--cds', required=True)
     parser.add_argument('--processes', type=int, help='number of processes')
     return parser.parse_args()
 
@@ -38,7 +47,7 @@ def parse_arguments():
 def main():
     args = parse_arguments()
     with Pool(processes=args.processes) as pool:
-        pool.starmap(partial(splice_align, outdir=args.outdir), zip(args.genomes, args.cds))
+        pool.map(partial(splice_align, cds=args.cds, outdir=args.outdir), args.genomes)
 
 
 # Execute ======================================================================
