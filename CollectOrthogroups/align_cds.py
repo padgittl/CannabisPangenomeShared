@@ -27,7 +27,7 @@ def splice_align(genome, cds, outdir='.'):
     run(('minimap2', '-t', '1', '--splice',
          '-o', os.path.join(
              outdir,
-            os.path.basename(genome).replace('fasta.gz', 'paf')
+            os.path.basename(genome).replace('.softmasked.fasta.gz', 'paf')
          ),
          genome,
          cds
