@@ -32,7 +32,7 @@ def parse_arguments():
 def main():
     args = parse_arguments()
     with Pool(processes=args.processes) as pool:
-        pool.map(partial(filter_aligned_cds, outdir=args.outdir), args.cds)
+        pool.map(partial(filter_aligned_cds, outdir=args.outdir), args.paf)
 
 
 # Execute ======================================================================
