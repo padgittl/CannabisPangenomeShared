@@ -31,7 +31,7 @@ def splice_align(genome, proteins, outdir='.'):
 
 
 def parse_arguments():
-    parser = ArgumentParser(description='align CDS sequences to scaffolded genomes')
+    parser = ArgumentParser(description='align protein sequences to scaffolded genomes')
     parser.add_argument('outdir', help='directory for output files')
     parser.add_argument('--genomes', nargs='+', required=True)
     parser.add_argument('--proteins', required=True)
