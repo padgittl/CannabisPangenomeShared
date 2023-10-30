@@ -26,7 +26,7 @@ def check_miniprot():
 def splice_align(genome, proteins, outdir='.'):
     with open(os.path.join(
         outdir, os.path.basename(genome).replace('softmasked.fasta.gz', 'paf')
-    )) as f:
+    ), 'w') as f:
         run((shutil.which('miniprot'), '-t', '1', genome, proteins), stdout=f)
 
 
