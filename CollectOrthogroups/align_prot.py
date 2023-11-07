@@ -1,8 +1,8 @@
 #===============================================================================
-# align_cds.py
+# align_prot.py
 #===============================================================================
 
-"""splice-aware alignment CDS sequences to scaffolded genomes with minimap2"""
+"""splice-aware alignment protein sequences to scaffolded genomes with miniprot"""
 
 # Imports ======================================================================
 
@@ -15,40 +15,35 @@ from subprocess import run
 
 # Functions ====================================================================
 
-def check_minimap2():
-    path = shutil.which('minimap2')
+def check_miniprot():
+    path = shutil.which('miniprot')
     if path:
-        print(f'minimap2 found at {path}')
+        print(f'miniprot found at {path}')
     else:
-        raise RuntimeError('minimap2 not found')
+        raise RuntimeError('miniprot not found')
 
 
-def splice_align(genome, cds, outdir='.'):
-    run(('minimap2', '-t', '1', '--splice',
-         '-o', os.path.join(
-             outdir,
-            os.path.basename(genome).replace('softmasked.fasta.gz', 'paf')
-         ),
-         genome,
-         cds
-        )
-    )
+def splice_align(genome, proteins, outdir='.'):
+    with open(os.path.join(
+        outdir, os.path.basename(genome).replace('softmasked.fasta.gz', 'paf')
+    ), 'w') as f:
+        run((shutil.which('miniprot'), '-t', '1', genome, proteins), stdout=f)
 
 
 def parse_arguments():
-    parser = ArgumentParser(description='align CDS sequences to scaffolded genomes')
+    parser = ArgumentParser(description='align protein sequences to scaffolded genomes')
     parser.add_argument('outdir', help='directory for output files')
     parser.add_argument('--genomes', nargs='+', required=True)
-    parser.add_argument('--cds', required=True)
+    parser.add_argument('--proteins', required=True)
     parser.add_argument('--processes', type=int, help='number of processes')
     return parser.parse_args()
 
 
 def main():
     args = parse_arguments()
-    check_minimap2()
+    check_miniprot()
     with Pool(processes=args.processes) as pool:
-        pool.map(partial(splice_align, cds=args.cds, outdir=args.outdir), args.genomes)
+        pool.map(partial(splice_align, proteins=args.proteins, outdir=args.outdir), args.genomes)
 
 
 # Execute ======================================================================
