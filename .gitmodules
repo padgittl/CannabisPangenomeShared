@@ -10,3 +10,6 @@
 [submodule "padgittl/CannabisPangenomeTransposableElements"]
 	path = padgittl/CannabisPangenomeTransposableElements
 	url = git@github.com:padgittl/CannabisPangenomeTransposableElements.git
+[submodule "amamerto/cannabis_pangenome"]
+	path = amamerto/cannabis_pangenome
+	url = git@github.com:amamerto/cannabis_pangenome.git
