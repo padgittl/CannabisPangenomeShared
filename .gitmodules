@@ -13,3 +13,6 @@
 [submodule "amamerto/cannabis_pangenome"]
 	path = amamerto/cannabis_pangenome
 	url = git@github.com:amamerto/cannabis_pangenome.git
+[submodule "rlynch/Cannapanna-Figure-2-panels"]
+	path = rlynch/Cannapanna-Figure-2-panels
+	url = git@github.com:RCLynch414/Cannapanna-Figure-2-panels.git
