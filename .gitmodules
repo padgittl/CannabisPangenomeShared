@@ -1,18 +1,24 @@
 [submodule "ViningLab/CannabisPangenome"]
 	path = ViningLab/CannabisPangenome
 	url = https://github.com/ViningLab/CannabisPangenome.git
+	branch = main
 [submodule "padgittl/CannabisPangenomeTerpeneSynthases"]
 	path = padgittl/CannabisPangenomeTerpeneSynthases
 	url = git@github.com:padgittl/CannabisPangenomeTerpeneSynthases.git
+	branch = main
 [submodule "jkitony/EH23_Expression"]
 	path = jkitony/EH23_Expression
 	url = git@github.com:jkitony/EH23_Expression.git
+	branch = main
 [submodule "padgittl/CannabisPangenomeTransposableElements"]
 	path = padgittl/CannabisPangenomeTransposableElements
 	url = git@github.com:padgittl/CannabisPangenomeTransposableElements.git
+	branch = main
 [submodule "amamerto/cannabis_pangenome"]
 	path = amamerto/cannabis_pangenome
 	url = git@github.com:amamerto/cannabis_pangenome.git
+	branch = main
 [submodule "rlynch/Cannapanna-Figure-2-panels"]
 	path = rlynch/Cannapanna-Figure-2-panels
 	url = git@github.com:RCLynch414/Cannapanna-Figure-2-panels.git
+	branch = main
