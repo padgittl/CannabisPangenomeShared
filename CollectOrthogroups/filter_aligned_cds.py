@@ -18,7 +18,7 @@ def filter_aligned_cds(paf, outdir='.'):
     with open(paf, 'r') as f_in, open(os.path.join(outdir, os.path.basename(paf)), 'w') as f_out:
         for line in f_in:
             _, q_len, _, _, _, _, _, _, _, _, _, qual, *_, cig = line.split()
-            match = {op: val for val, op in Cigar(cig).merge_like_ops().items()}.get('M', 0)
+            match = {op: val for val, op in Cigar(cig.split(':')[-1]).merge_like_ops().items()}.get('M', 0)
             if qual == '60' and match / int(q_len) > 0.8:
                 f_out.write(line)
 
