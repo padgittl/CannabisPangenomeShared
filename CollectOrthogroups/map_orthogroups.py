@@ -5,12 +5,12 @@ from scaffolded import SCAFFOLDED
 PAF_DIR = 'filtered_cds_cigar'
 
 hogs = tuple(pd.read_table(
-        'orthofinder-proteomes/primary_transcripts/OrthoFinder/Results_Jan21/Phylogenetic_Hierarchical_Orthogroups/N0.tsv',
+        'orthofinder-proteomes/primary_transcripts/OrthoFinder/Results_Jan21/Phylogenetic_Hierarchical_Orthogroups/N7.tsv',
         index_col=0)['Cannabis_sativa_high_confidence_prot_merged'].dropna().index)
 
 gene_to_hog = {
     gene: hog for hog, gene_list in pd.read_table(
-        'orthofinder-proteomes/primary_transcripts/OrthoFinder/Results_Jan21/Phylogenetic_Hierarchical_Orthogroups/N0.tsv',
+        'orthofinder-proteomes/primary_transcripts/OrthoFinder/Results_Jan21/Phylogenetic_Hierarchical_Orthogroups/N7.tsv',
         index_col=0)['Cannabis_sativa_high_confidence_prot_merged'].dropna().items()
     for gene in gene_list.split(', ')
 }
