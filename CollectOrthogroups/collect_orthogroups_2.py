@@ -112,10 +112,6 @@ def main():
         index_col=0,
         dtype=bool
     )
-    ortho = ortho.drop(
-        ['FragariaVesca', 'LotusJaponicus', 'MalusDomestica', 'PrunusPersica', 'RosaChinensis'],
-        axis=1
-    )
     col_df = pd.DataFrame(
         col_values(ortho, contours=contours),
         columns=('n_genomes', 'n_orthogroups', 'sequence')
