@@ -23,4 +23,4 @@ haps_to_hogs = {hap: {gene_to_hog[g]
                       if gene_to_hog.get(g)}
                  for hap in SCAFFOLDED}
 
-print(pd.DataFrame({hap: [h in haps_to_hogs[hap] for h in hogs] for hap in SCAFFOLDED}, index=hogs))
+pd.DataFrame({hap: [h in haps_to_hogs[hap] for h in hogs] for hap in SCAFFOLDED}, index=hogs).to_csv('orthogroup_table.tsv', sep='\t')
