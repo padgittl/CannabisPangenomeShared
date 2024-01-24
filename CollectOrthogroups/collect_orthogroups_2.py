@@ -109,8 +109,7 @@ def main():
     palette = COL_COLOR_PALETTE
     ortho = pd.read_table(
         'orthogroup_table.tsv',
-        index_col=0,
-        dtype=bool
+        index_col=0
     )
     col_df = pd.DataFrame(
         col_values(ortho, contours=contours),
