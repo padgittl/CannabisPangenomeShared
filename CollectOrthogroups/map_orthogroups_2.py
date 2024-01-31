@@ -4,7 +4,7 @@ from scaffolded import SCAFFOLDED
 
 PAF_DIR = 'filtered_cds_cigar'
 HOG_TSV = 'nolans-orthofinder/Phylogenetic_Hierarchical_Orthogroups/N30.tsv'
-SINGLETONS_TSV = 'nolans-proteomes/Orthogroups/Orthogroups_UnassignedGenes.tsv'
+SINGLETONS_TSV = 'nolans-orthofinder/Orthogroups/Orthogroups_UnassignedGenes.tsv'
 hogs = tuple(pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].dropna().index)
 singletons = {gene: og for og, gene in pd.read_table(SINGLETONS_TSV, index_col=0)[CSAT_COLNAME].dropna().items()}
 gene_to_og = {
