@@ -12,6 +12,7 @@ gene_to_hog = {
     gene: hog for hog, gene_list in pd.read_table(HOG_TSV, index_col=0)[CSAT_COLNAME].dropna().items()
     for gene in gene_list.split(', ')
 }
+ogs = hogs + tuple(singletons.values())
 gene_to_og = gene_to_hog.update(singletons)
 
 def hap_to_genes(paf_file):
@@ -22,4 +23,4 @@ haps_to_ogs = {hap: {gene_to_og[g]
                       if gene_to_og.get(g)}
                  for hap in SCAFFOLDED}
 
-pd.DataFrame({hap: [h in haps_to_ogs[hap] for h in hogs] for hap in SCAFFOLDED}, index=hogs).to_csv('orthogroup_table.tsv', sep='\t')
+pd.DataFrame({hap: [og in haps_to_ogs[hap] for og in ogs] for hap in SCAFFOLDED}, index=hogs).to_csv('orthogroup_table.tsv', sep='\t')
