@@ -5,13 +5,13 @@ from scaffolded import SCAFFOLDED
 PAF_DIR = 'filtered_cds_cigar'
 HOG_TSV = 'nolans-orthofinder/Phylogenetic_Hierarchical_Orthogroups/N30.tsv'
 SINGLETONS_TSV = 'nolans-orthofinder/Orthogroups/Orthogroups_UnassignedGenes.tsv'
-hogs = tuple(pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].dropna().index)
+hogs = tuple(pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].dropna(how='all').index)
 singletons = {
-    gene: og for og, gene_list in pd.read_table(SINGLETONS_TSV, index_col=0, dtype=str)[SCAFFOLDED].iterrows()
+    gene: og for og, gene_list in pd.read_table(SINGLETONS_TSV, index_col=0, dtype=str)[SCAFFOLDED].dropna(how='all').iterrows()
     for gene in (g for g in gene_list if (not pd.isna(g)))
 }
 gene_to_og = {
-    gene: hog for hog, gene_list in pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].iterrows()
+    gene: hog for hog, gene_list in pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].dropna(how='all').iterrows()
     for gene in ', '.join(g for g in gene_list if (not pd.isna(g))).split(', ')
 }
 ogs = hogs + tuple(singletons.values())
