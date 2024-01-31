@@ -8,7 +8,7 @@ SINGLETONS_TSV = 'nolans-proteomes/Orthogroups/Orthogroups_UnassignedGenes.tsv'
 hogs = tuple(pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].dropna().index)
 singletons = {gene: og for og, gene in pd.read_table(SINGLETONS_TSV, index_col=0)[CSAT_COLNAME].dropna().items()}
 gene_to_og = {
-    gene: hog for hog, gene_list in pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].dropna().items()
+    gene: hog for hog, gene_list in pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].dropna().iterrows()
     for gene in ', '.join(gene_list).split(', ')
 }
 ogs = hogs + tuple(singletons.values())
