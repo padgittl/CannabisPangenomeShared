@@ -8,12 +8,12 @@ SINGLETONS_TSV = 'nolans-proteomes/primary_transcripts/OrthoFinder/Results_Jan30
 CSAT_COLNAME = 'Cannabis_sativa_high_confidence_prot_merged'
 hogs = tuple(pd.read_table(HOG_TSV, index_col=0)[CSAT_COLNAME].dropna().index)
 singletons = {gene: og for og, gene in pd.read_table(SINGLETONS_TSV, index_col=0)[CSAT_COLNAME].dropna().items()}
-gene_to_hog = {
+gene_to_og = {
     gene: hog for hog, gene_list in pd.read_table(HOG_TSV, index_col=0)[CSAT_COLNAME].dropna().items()
     for gene in gene_list.split(', ')
 }
 ogs = hogs + tuple(singletons.values())
-gene_to_og = gene_to_hog.update(singletons)
+gene_to_og.update(singletons)
 
 def hap_to_genes(paf_file):
     return tuple(pd.read_table(paf_file, index_col=0).index)
