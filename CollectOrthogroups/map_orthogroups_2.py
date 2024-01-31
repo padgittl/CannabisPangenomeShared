@@ -7,12 +7,12 @@ HOG_TSV = 'nolans-orthofinder/Phylogenetic_Hierarchical_Orthogroups/N30.tsv'
 SINGLETONS_TSV = 'nolans-orthofinder/Orthogroups/Orthogroups_UnassignedGenes.tsv'
 hogs = tuple(pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].dropna().index)
 singletons = {
-    gene: og for og, gene_list in pd.read_table(SINGLETONS_TSV, index_col=0)[SCAFFOLDED].dropna().iterrows()
-    for gene in set(gene_list) if gene != ''
+    gene: og for og, gene_list in pd.read_table(SINGLETONS_TSV, index_col=0, dtype=str)[SCAFFOLDED].iterrows()
+    for gene in (g for g in gene_list if (not pd.isna(g)))
 }
 gene_to_og = {
-    gene: hog for hog, gene_list in pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].dropna().iterrows()
-    for gene in ', '.join(gene_list).split(', ')
+    gene: hog for hog, gene_list in pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].iterrows()
+    for gene in ', '.join(g for g in gene_list if (not pd.isna(g))).split(', ')
 }
 ogs = hogs + tuple(singletons.values())
 gene_to_og.update(singletons)
