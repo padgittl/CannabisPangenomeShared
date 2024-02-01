@@ -1,7 +1,7 @@
 import pandas as pd
 import os.path
 from scaffolded import SCAFFOLDED
-from faidx import Fasta
+from pyfaidx import Fasta
 
 PAF_DIR = 'filtered_cds_cigar'
 CDS_DIR = 'primary_high_confidence_cds'
