@@ -1,8 +1,10 @@
 import pandas as pd
 import os.path
 from scaffolded import SCAFFOLDED
+from faidx import Fasta
 
 PAF_DIR = 'filtered_cds_cigar'
+CDS_DIR = 'primary_high_confidence_cds'
 HOG_TSV = 'nolans-orthofinder/Phylogenetic_Hierarchical_Orthogroups/N30.tsv'
 SINGLETONS_TSV = 'nolans-orthofinder/Orthogroups/Orthogroups_UnassignedGenes.tsv'
 hogs = tuple(pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].dropna(how='all').index)
@@ -17,12 +19,15 @@ gene_to_og = {
 ogs = hogs + tuple(singletons.values())
 gene_to_og.update(singletons)
 
-def hap_to_genes(paf_file):
-    return tuple(pd.read_table(paf_file, index_col=0).index)
+def hap_to_genes(paf_file, cds_file):
+    return set(tuple(pd.read_table(paf_file, index_col=0).index) + tuple(Fasta(cds_file).keys()))
 
 haps_to_ogs = {hap: {gene_to_og[g[:-3]]
-                      for g in hap_to_genes(os.path.join(PAF_DIR, f'{hap}.paf'))
-                      if gene_to_og.get(g[:-3])}
+                        for g in hap_to_genes(
+                            os.path.join(PAF_DIR, f'{hap}.paf'),
+                            os.path.join(CDS_DIR, f'{hap}.primary_high_confidence.cds.fasta.gz')
+                        )
+                        if gene_to_og.get(g[:-3])}
                  for hap in SCAFFOLDED}
 
 pd.DataFrame({hap: [og in haps_to_ogs[hap] for og in ogs] for hap in SCAFFOLDED}, index=ogs).to_csv('orthogroup_table.tsv', sep='\t')
