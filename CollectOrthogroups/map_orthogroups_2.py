@@ -30,4 +30,5 @@ haps_to_ogs = {hap: {gene_to_og[g[:-3]]
                         if gene_to_og.get(g[:-3])}
                  for hap in SCAFFOLDED}
 
-pd.DataFrame({hap: [og in haps_to_ogs[hap] for og in ogs] for hap in SCAFFOLDED}, index=ogs).to_csv('orthogroup_table.tsv', sep='\t')
+og_tab = pd.DataFrame({hap: [og in haps_to_ogs[hap] for og in ogs] for hap in SCAFFOLDED}, index=ogs)
+og_tab.loc[~(og_tab==False).all(axis=1)].to_csv('orthogroup_table.tsv', sep='\t')
