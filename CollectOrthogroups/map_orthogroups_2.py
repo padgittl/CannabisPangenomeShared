@@ -16,8 +16,8 @@ gene_to_og = {
     gene[:-3]: hog for hog, gene_list in pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].dropna(how='all').iterrows()
     for gene in ', '.join(g for g in gene_list if (not pd.isna(g))).split(', ')
 }
-ogs = hogs + tuple(singletons.values())
-gene_to_og.update(singletons)
+ogs = hogs #+ tuple(singletons.values())
+# gene_to_og.update(singletons)
 
 def hap_to_genes(paf_file, cds_file):
     return set(tuple(pd.read_table(paf_file, index_col=0).index) + tuple(Fasta(cds_file).keys()))
