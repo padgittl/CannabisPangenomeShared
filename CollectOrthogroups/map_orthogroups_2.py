@@ -25,7 +25,7 @@ def hap_to_genes(paf_file, cds_file):
 haps_to_ogs = {hap: {gene_to_og[g[:-3]]
                         for g in hap_to_genes(
                             os.path.join(PAF_DIR, f'{hap}.paf'),
-                            os.path.join(CDS_DIR, f'{hap}.primary_high_confidence.cds.fasta.gz')
+                            os.path.join(CDS_DIR, f'{hap}.primary_high_confidence.cds.fasta')
                         )
                         if gene_to_og.get(g[:-3])}
                  for hap in SCAFFOLDED}
