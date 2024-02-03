@@ -20,8 +20,8 @@ ogs = hogs #+ tuple(singletons.values())
 # gene_to_og.update(singletons)
 
 def hap_to_genes(paf_file, cds_file):
-    with open(paf_file, 'r') as f
-    return set(l.split()[0] for l in f.readlines()) + tuple(Fasta(cds_file).keys()))
+    with open(paf_file, 'r') as f:
+    return set((l.split()[0] for l in f.readlines()) + tuple(Fasta(cds_file).keys()))
 
 haps_to_ogs = {hap: {gene_to_og[g[:-3]]
                         for g in hap_to_genes(
