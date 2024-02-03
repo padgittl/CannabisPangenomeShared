@@ -21,7 +21,7 @@ ogs = hogs #+ tuple(singletons.values())
 
 def hap_to_genes(paf_file, cds_file):
     print(paf_file)
-    return set(tuple(pd.read_table(paf_file, index_col=0).index) + tuple(Fasta(cds_file).keys()))
+    return set(tuple(pd.read_table(paf_file, index_col=0, sep='\t').index) + tuple(Fasta(cds_file).keys()))
 
 haps_to_ogs = {hap: {gene_to_og[g[:-3]]
                         for g in hap_to_genes(
