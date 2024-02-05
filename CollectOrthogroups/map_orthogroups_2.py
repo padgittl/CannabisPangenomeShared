@@ -1,5 +1,6 @@
 import pandas as pd
 import os.path
+from itertools import chain
 from scaffolded import SCAFFOLDED
 from pyfaidx import Fasta
 
@@ -21,7 +22,7 @@ ogs = hogs #+ tuple(singletons.values())
 
 def hap_to_genes(paf_file, cds_file):
     with open(paf_file, 'r') as f:
-        genes = set((l.split()[0] for l in f.readlines()) + tuple(Fasta(cds_file).keys()))
+        genes = set(chain((l.split()[0] for l in f.readlines()), Fasta(cds_file).keys()))
     return genes
 
 haps_to_ogs = {hap: {gene_to_og[g[:-3]]
