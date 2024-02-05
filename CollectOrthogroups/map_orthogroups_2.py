@@ -8,6 +8,7 @@ PAF_DIR = 'filtered_cds_cigar'
 CDS_DIR = 'primary_high_confidence_cds'
 HOG_TSV = 'nolans-orthofinder/Phylogenetic_Hierarchical_Orthogroups/N30.tsv'
 SINGLETONS_TSV = 'nolans-orthofinder/Orthogroups/Orthogroups_UnassignedGenes.tsv'
+LIKELY_CONTAMINANTS = csat.likely_contaminants.tsv
 hogs = tuple(pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].dropna(how='all').index)
 singletons = {
     gene[:-3]: og for og, gene_list in pd.read_table(SINGLETONS_TSV, index_col=0, dtype=str)[SCAFFOLDED].dropna(how='all').iterrows()
