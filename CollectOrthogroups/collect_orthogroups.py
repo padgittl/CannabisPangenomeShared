@@ -1,12 +1,28 @@
-from collections import Counter
 import pandas as pd
+import os.path
+from argparse import ArgumentParser
+from itertools import chain
+from scaffolded import SCAFFOLDED
+from pyfaidx import Fasta
+from collections import Counter
 import seaborn as sns
-import numpy as np
 from math import prod, floor
 from scipy.stats import hypergeom
-from scaffolded import SCAFFOLDED
 
+PAF_DIR = 'filtered_cds_cigar'
+CDS_DIR = 'primary_high_confidence_cds'
+HOG_TSV = 'nolans-orthofinder/Phylogenetic_Hierarchical_Orthogroups/N30.tsv'
+SINGLETONS_TSV = 'nolans-orthofinder/Orthogroups/Orthogroups_UnassignedGenes.tsv'
+LIKELY_CONTAMINANTS = 'csat.likely_contaminants.tsv'
 COL_COLOR_PALETTE = 'rocket_r'
+
+def hap_to_genes(cds_file, paf_file, contam, rescue: bool = True):
+    with open(paf_file, 'r') as f:
+        genes = set(chain(
+            Fasta(cds_file).keys(),
+            (l.split()[0] for l in f.readlines()) if rescue else ()
+        ))
+    return genes - contam
 
 def col_values(orthogroup_df, contours=None):
     """Calculate collection curve
@@ -103,14 +119,41 @@ def col_plot(plotting_data, output, title: str = 'Collection curve',
     fig.savefig(output)
     fig.clf()
 
+def parse_arguments():
+    parser = ArgumentParser()
+    parser.add_argument('-r', '--rescue', action='store_true')
+    return parser.parse_args()
 
 def main():
+    args = parse_arguments()
+    hogs = tuple(pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].dropna(how='all').index)
+    gene_to_og = {
+        gene: hog for hog, gene_list in pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].dropna(how='all').iterrows()
+        for gene in ', '.join(g for g in gene_list if (not pd.isna(g))).split(', ')
+    }
+    # singletons = {
+    #     gene: og for og, gene_list in pd.read_table(SINGLETONS_TSV, index_col=0, dtype=str)[SCAFFOLDED].dropna(how='all').iterrows()
+    #     for gene in (g for g in gene_list if (not pd.isna(g)))
+    # }
+    # gene_to_og.update(singletons)
+    ogs = hogs #+ tuple(singletons.values())
+    haps_to_ogs = {hap: {gene_to_og[g]
+                            for g in hap_to_genes(
+                                os.path.join(CDS_DIR, f'{hap}.primary_high_confidence.cds.fasta'),
+                                os.path.join(PAF_DIR, f'{hap}.paf'),
+                                set(pd.read_table(LIKELY_CONTAMINANTS)['GID']),
+                                rescue=args.rescue
+                            )
+                            if gene_to_og.get(g)}
+                    for hap in SCAFFOLDED}
+    ortho = pd.DataFrame(
+        {hap: [og in haps_to_ogs[hap] for og in ogs] for hap in SCAFFOLDED},
+        index=ogs
+    ).loc[~(ortho==False).all(axis=1)]
+    ortho.to_csv('orthogroup_table.tsv', sep='\t')
+
     contours = None
     palette = COL_COLOR_PALETTE
-    ortho = pd.read_table(
-        'orthogroup_table.tsv',
-        index_col=0
-    )
     col_df = pd.DataFrame(
         col_values(ortho, contours=contours),
         columns=('n_genomes', 'n_orthogroups', 'sequence')
@@ -120,5 +163,7 @@ def main():
                  palette=(palette if contours else sns.color_palette(palette, n_colors=2)))
     col_plot(col_df, 'Csativa-collect-orthogroups-2.pdf',
                  palette=(palette if contours else sns.color_palette(palette, n_colors=2)))
+
+
 if __name__ == '__main__':
     main()
