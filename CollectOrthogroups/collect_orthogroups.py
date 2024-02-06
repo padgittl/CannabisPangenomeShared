@@ -159,10 +159,10 @@ def main():
         col_values(ortho, contours=contours),
         columns=('n_genomes', 'n_orthogroups', 'sequence')
     )
-    col_df.to_csv('Csativa-collect-orthogroups-2.tsv', index=False, sep='\t')
-    col_plot(col_df, 'Csativa-collect-orthogroups-2.svg',
+    col_df.to_csv('Csativa-collect-orthogroups.tsv', index=False, sep='\t')
+    col_plot(col_df, 'Csativa-collect-orthogroups.svg',
                  palette=(palette if contours else sns.color_palette(palette, n_colors=2)))
-    col_plot(col_df, 'Csativa-collect-orthogroups-2.pdf',
+    col_plot(col_df, 'Csativa-collect-orthogroups.pdf',
                  palette=(palette if contours else sns.color_palette(palette, n_colors=2)))
 
 
