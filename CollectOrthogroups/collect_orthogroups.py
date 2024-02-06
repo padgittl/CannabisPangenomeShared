@@ -150,6 +150,7 @@ def main():
         {hap: [og in haps_to_ogs[hap] for og in ogs] for hap in SCAFFOLDED},
         index=ogs
     ).loc[~(ortho==False).all(axis=1)]
+    ortho = ortho.loc[~(ortho==False).all(axis=1)]
     ortho.to_csv('orthogroup_table.tsv', sep='\t')
 
     contours = None
