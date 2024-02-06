@@ -25,8 +25,8 @@ contam = set(pd.read_table(LIKELY_CONTAMINANTS)['GID'])
 
 def hap_to_genes(paf_file, cds_file):
     with open(paf_file, 'r') as f:
-        genes = set(l.split()[0] for l in f.readlines()) - contam
-        # genes = set(chain((l.split()[0] for l in f.readlines()), Fasta(cds_file).keys()))
+        # genes = set(l.split()[0] for l in f.readlines()) - contam
+        genes = set(chain((l.split()[0] for l in f.readlines()), Fasta(cds_file).keys())) - contam
     return genes
 
 haps_to_ogs = {hap: {gene_to_og[g[:-3]]
