@@ -44,8 +44,8 @@ def main():
     args = parse_arguments()
     with Pool(processes=args.processes) as pool:
         pool.map(
-            partial(filter_aligned_cds, outdir=args.outdir, cigar=args.cigar,
-                    match=args.match_percent),
+            partial(filter_aligned_cds, outdir=args.outdir, use_cigar=args.cigar,
+                    match_percent=args.match_percent),
             args.paf
         )
 
