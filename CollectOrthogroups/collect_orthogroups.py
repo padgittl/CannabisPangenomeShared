@@ -24,9 +24,7 @@ def col_values(orthogroup_df, contours=None):
     """
 
     g = len(orthogroup_df.columns)
-    score_dist = Counter(sum(score) for _, score in orthogroup_df.iterrows()
-                         if sum(score)>1)
-    # score_dist = Counter(sum(score) for _, score in orthogroup_df.iterrows())
+    score_dist = Counter(sum(score) for _, score in orthogroup_df.iterrows())
     for n_genomes in range(1, g+1):
         yield (
             n_genomes,
@@ -110,42 +108,17 @@ def main():
     contours = None
     palette = COL_COLOR_PALETTE
     ortho = pd.read_table(
-        'Phylogenetic_Hierarchical_Orthogroups/N3.tsv',
-        index_col=0,
-        dtype=str
-    ).iloc[:,2:].notna()
-    ortho = ortho.drop(
-        ['FragariaVesca', 'LotusJaponicus', 'MalusDomestica', 'PrunusPersica', 'RosaChinensis'],
-        axis=1
+        'orthogroup_table.tsv',
+        index_col=0
     )
-    # singletons = pd.read_table(
-    #     'Orthogroups/Orthogroups_UnassignedGenes.tsv',
-    #     index_col=0,
-    #     dtype=str
-    # ).notna()
-    # singletons = singletons.drop(
-    #     ['FragariaVesca', 'LotusJaponicus', 'MalusDomestica', 'PrunusPersica', 'RosaChinensis'],
-    #     axis=1
-    # )
-    # ortho = pd.concat((ortho, singletons), axis=0)
     col_df = pd.DataFrame(
         col_values(ortho, contours=contours),
         columns=('n_genomes', 'n_orthogroups', 'sequence')
     )
-    col_df.to_csv('Csativa-collect-orthogroups.tsv', index=False, sep='\t')
-    col_plot(col_df, 'Csativa-collect-orthogroups.svg',
+    col_df.to_csv('Csativa-collect-orthogroups-2.tsv', index=False, sep='\t')
+    col_plot(col_df, 'Csativa-collect-orthogroups-2.svg',
                  palette=(palette if contours else sns.color_palette(palette, n_colors=2)))
-    col_plot(col_df, 'Csativa-collect-orthogroups.pdf',
-                 palette=(palette if contours else sns.color_palette(palette, n_colors=2)))
-    ortho = ortho.loc[:,SCAFFOLDED]
-    col_df = pd.DataFrame(
-        col_values(ortho, contours=contours),
-        columns=('n_genomes', 'n_orthogroups', 'sequence')
-    )
-    col_df.to_csv('Csativa-collect-orthogroups-scaffolded.tsv', index=False, sep='\t')
-    col_plot(col_df, 'Csativa-collect-orthogroups-scaffolded.svg',
-                 palette=(palette if contours else sns.color_palette(palette, n_colors=2)))
-    col_plot(col_df, 'Csativa-collect-orthogroups-scaffolded.pdf',
+    col_plot(col_df, 'Csativa-collect-orthogroups-2.pdf',
                  palette=(palette if contours else sns.color_palette(palette, n_colors=2)))
 if __name__ == '__main__':
     main()
