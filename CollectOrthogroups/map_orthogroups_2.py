@@ -11,11 +11,11 @@ SINGLETONS_TSV = 'nolans-orthofinder/Orthogroups/Orthogroups_UnassignedGenes.tsv
 LIKELY_CONTAMINANTS = 'csat.likely_contaminants.tsv'
 hogs = tuple(pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].dropna(how='all').index)
 singletons = {
-    gene[:-3]: og for og, gene_list in pd.read_table(SINGLETONS_TSV, index_col=0, dtype=str)[SCAFFOLDED].dropna(how='all').iterrows()
+    gene: og for og, gene_list in pd.read_table(SINGLETONS_TSV, index_col=0, dtype=str)[SCAFFOLDED].dropna(how='all').iterrows()
     for gene in (g for g in gene_list if (not pd.isna(g)))
 }
 gene_to_og = {
-    gene[:-3]: hog for hog, gene_list in pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].dropna(how='all').iterrows()
+    gene: hog for hog, gene_list in pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].dropna(how='all').iterrows()
     for gene in ', '.join(g for g in gene_list if (not pd.isna(g))).split(', ')
 }
 ogs = hogs #+ tuple(singletons.values())
@@ -34,7 +34,7 @@ haps_to_ogs = {hap: {gene_to_og[g[:-3]]
                             os.path.join(PAF_DIR, f'{hap}.paf'),
                             os.path.join(CDS_DIR, f'{hap}.primary_high_confidence.cds.fasta')
                         )
-                        if gene_to_og.get(g[:-3])}
+                        if gene_to_og.get(g)}
                  for hap in SCAFFOLDED}
 
 og_tab = pd.DataFrame({hap: [og in haps_to_ogs[hap] for og in ogs] for hap in SCAFFOLDED}, index=ogs)
