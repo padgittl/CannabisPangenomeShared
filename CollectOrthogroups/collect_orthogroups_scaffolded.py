@@ -125,6 +125,7 @@ def col_plot(plotting_data, output, title: str = 'Collection curve',
 def parse_arguments():
     parser = ArgumentParser()
     parser.add_argument('-r', '--rescue')
+    parser.add_argument('-c', '--contours', type=int, nargs='+')
     return parser.parse_args()
 
 def main():
@@ -155,7 +156,7 @@ def main():
     ortho = ortho.loc[~(ortho==False).all(axis=1)]
     ortho.to_csv('orthogroup_table.tsv', sep='\t')
 
-    contours = None
+    contours = args.contours
     col_df = pd.DataFrame(
         col_values(ortho, contours=contours),
         columns=('Genomes', 'Orthogroups', 'sequence')
