@@ -31,9 +31,9 @@ sh download_genomes.sh
 sh download_primary_cds.sh
 sh download_orthogroups.sh
 sh merge_cds.sh
-python align_cds.py --genomes genomes/*.fasta.gz \
+python align_cds.py --genomes genomes/*/*.fasta.gz \
   --cds primary_high_confidence_cds_merged/primary_high_confidence.cds.fasta.gz \
-  --processes 2 \
+  --processes 64 \
   aligned_cds/
 python filter_aligned_cds.py --paf aligned_cds/*.paf \
   --cigar \
