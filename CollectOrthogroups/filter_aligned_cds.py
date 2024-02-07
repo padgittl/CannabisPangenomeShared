@@ -7,10 +7,12 @@
 # Imports ======================================================================
 
 import os.path
+import tempfile
 from argparse import ArgumentParser
 from multiprocessing import Pool
 from functools import partial
 from cigar import Cigar
+from pybedtools import BedTool
 
 # Functions ====================================================================
 
@@ -33,6 +35,7 @@ def parse_arguments():
     parser = ArgumentParser(description='filter CDS alignments')
     parser.add_argument('outdir', help='directory for output files')
     parser.add_argument('--paf', nargs='+', required=True)
+    parser.add_argument('--bed', nargs='+', required=True)
     parser.add_argument('--cigar', action='store_true', help='use CIGAR to calculate matches')
     parser.add_argument('--match-percent', type=int, default=80,
                         help='minimum percent matches for an alignment to pass')
