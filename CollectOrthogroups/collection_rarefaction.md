@@ -20,9 +20,7 @@ sum(
 Each is a special case of a general formula for estimating the number of orthogroups that will be found in at least *k* genomes, based on the hypergeometric survival function:
 ```python
 sum(
-    (
-        hypergeom.sf(k, g, s, n_genomes)
-    )*score_dist[s]
+    hypergeom.sf(k, g, s, n_genomes)*score_dist[s]
     for s in range(1, g+1)
 )
 ```
