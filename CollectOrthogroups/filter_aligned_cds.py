@@ -62,10 +62,10 @@ def parse_arguments():
 def main():
     args = parse_arguments()
     with Pool(processes=args.processes) as pool:
-        pool.map(
+        pool.starmap(
             partial(filter_aligned_cds, outdir=args.outdir, use_cigar=args.cigar,
                     match_percent=args.match_percent),
-            args.paf
+            zip(args.paf, args.bed)
         )
 
 

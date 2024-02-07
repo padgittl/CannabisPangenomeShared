@@ -19,7 +19,7 @@ python filter_aligned_cds.py \
   --cigar \
   --match-percent 80 \
   --paf aligned_cds_scaffolded/*.paf \
-  --bed aligned_cds_scaffolded/*.paf \
+  --bed primary_high_confidence_scaffolded/*.bed.gz \
   --processes 64 \
   filtered_cds_scaffolded/
 python collect_orthogroups.py --rescue filtered_cds_scaffolded/
