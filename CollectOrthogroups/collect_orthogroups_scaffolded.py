@@ -10,7 +10,7 @@ from math import prod, floor
 from scipy.stats import hypergeom
 
 PAF_DIR = 'filtered_cds_scaffolded'
-CDS_DIR = 'primary_high_confidence_cds_scaffolded'
+CDS_DIR = 'primary_high_confidence_scaffolded'
 HOG_TSV = 'nolans-orthofinder/Phylogenetic_Hierarchical_Orthogroups/N30.tsv'
 SINGLETONS_TSV = 'nolans-orthofinder/Orthogroups/Orthogroups_UnassignedGenes.tsv'
 LIKELY_CONTAMINANTS = 'csat.likely_contaminants.tsv'
