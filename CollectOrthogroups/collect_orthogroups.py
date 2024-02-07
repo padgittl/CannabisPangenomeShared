@@ -9,20 +9,23 @@ import seaborn as sns
 from math import prod, floor
 from scipy.stats import hypergeom
 
-PAF_DIR = 'filtered_cds_cigar'
-CDS_DIR = 'primary_high_confidence_cds'
+PAF_DIR = 'filtered_cds_scaffolded'
+CDS_DIR = 'primary_high_confidence_cds_scaffolded'
 HOG_TSV = 'nolans-orthofinder/Phylogenetic_Hierarchical_Orthogroups/N30.tsv'
 SINGLETONS_TSV = 'nolans-orthofinder/Orthogroups/Orthogroups_UnassignedGenes.tsv'
 LIKELY_CONTAMINANTS = 'csat.likely_contaminants.tsv'
-COL_COLOR_PALETTE = 'rocket_r'
+COL_COLOR_PALETTE = 'magma_r'
+COL_TWO_COLORS = "#1E90FF", "#FFA500"
 
-def hap_to_genes(cds_file, paf_file, contam, rescue: bool = True):
-    with open(paf_file, 'r') as f:
-        genes = set(chain(
-            Fasta(cds_file).keys(),
-            (l.split()[0] for l in f.readlines()) if rescue else ()
-        ))
-    return genes - contam
+def hap_to_genes(cds_file, contam, rescue_alignment=None):
+    directly_predicted_genes = set(Fasta(cds_file).keys()) - contam
+    if rescue_alignment:
+        with open(rescue_alignment, 'r') as f:
+            rescued_genes = set(l.split()[0] for l in f.readlines()) - contam
+    else:
+        rescued_genes = set()
+    return directly_predicted_genes + rescued_genes
+
 
 def col_values(orthogroup_df, contours=None):
     """Calculate collection curve
@@ -121,7 +124,7 @@ def col_plot(plotting_data, output, title: str = 'Collection curve',
 
 def parse_arguments():
     parser = ArgumentParser()
-    parser.add_argument('-r', '--rescue', action='store_true')
+    parser.add_argument('-r', '--rescue')
     return parser.parse_args()
 
 def main():
@@ -140,9 +143,8 @@ def main():
     haps_to_ogs = {hap: {gene_to_og[g]
                             for g in hap_to_genes(
                                 os.path.join(CDS_DIR, f'{hap}.primary_high_confidence.cds.fasta'),
-                                os.path.join(PAF_DIR, f'{hap}.paf'),
                                 set(pd.read_table(LIKELY_CONTAMINANTS)['GID']),
-                                rescue=args.rescue
+                                rescue_alignment=os.path.join(PAF_DIR, f'{hap}.paf') if args.rescue else None
                             )
                             if gene_to_og.get(g)}
                     for hap in SCAFFOLDED}
@@ -154,16 +156,15 @@ def main():
     ortho.to_csv('orthogroup_table.tsv', sep='\t')
 
     contours = None
-    palette = COL_COLOR_PALETTE
     col_df = pd.DataFrame(
         col_values(ortho, contours=contours),
         columns=('n_genomes', 'n_orthogroups', 'sequence')
     )
     col_df.to_csv('Csativa-collect-orthogroups.tsv', index=False, sep='\t')
     col_plot(col_df, 'Csativa-collect-orthogroups.svg',
-                 palette=(palette if contours else sns.color_palette(palette, n_colors=2)))
+                 palette=(COL_COLOR_PALETTE if contours else COL_TWO_COLORS))
     col_plot(col_df, 'Csativa-collect-orthogroups.pdf',
-                 palette=(palette if contours else sns.color_palette(palette, n_colors=2)))
+                 palette=(COL_COLOR_PALETTE if contours else COL_TWO_COLORS))
 
 
 if __name__ == '__main__':
