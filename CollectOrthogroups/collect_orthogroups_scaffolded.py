@@ -161,9 +161,9 @@ def main():
         columns=('Genomes', 'Orthogroups', 'sequence')
     )
     col_df.to_csv('Csativa-collect-orthogroups.tsv', index=False, sep='\t')
-    col_plot(col_df, 'Csativa-collect-orthogroups.svg',
+    col_plot(col_df, 'Csativa-collect-orthogroups.svg', title='',
                  palette=(COL_COLOR_PALETTE if contours else COL_TWO_COLORS))
-    col_plot(col_df, 'Csativa-collect-orthogroups.pdf',
+    col_plot(col_df, 'Csativa-collect-orthogroups.pdf', title='',
                  palette=(COL_COLOR_PALETTE if contours else COL_TWO_COLORS))
 
 
