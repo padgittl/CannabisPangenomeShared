@@ -11,7 +11,7 @@ sh download_genomes_scaffolded.sh
 sh download_primary_cds_scaffolded.sh
 sh download_orthogroups_scaffolded.sh
 sh merge_cds_scaffolded.sh
-python align_cds.py --genomes genomes_scaffolded/*.fasta.gz \
+python align_cds.py --genomes genomes_scaffolded/*.fasta \
   --cds primary_high_confidence_cds_merged/primary_high_confidence.cds.fasta.gz \
   --processes 2 \
   aligned_cds_scaffolded/
