@@ -2,10 +2,10 @@
 
 Steps to generate orthogroup-based collection curves (scaffolded only)
 ```sh
-sh download-scaffolded-genomes.sh
-sh download-scaffolded-primary-cds.sh
-sh merge-cds-scaffolded.sh
-python align_cds.py --genomes scaffolded_genomes/*.fasta.gz \
+sh download_scaffolded_genomes.sh
+sh download_scaffolded_primary-cds.sh
+sh merge_cds_scaffolded.sh
+python align_cds.py --genomes genomes_scaffolded/*.fasta.gz \
   --cds primary_high_confidence_cds_merged/primary_high_confidence.cds.fasta.gz \
   --processes 2 \
   aligned_cds_scaffolded/
@@ -15,7 +15,7 @@ python filter_aligned_cds.py --paf aligned_cds_scaffolded/*.paf \
   --paf aligned_cds/*.paf \
   --processes 2 \
   filtered_cds_scaffolded/
-sh download-orthogroups-scaffolded.sh
+sh download_orthogroups_scaffolded.sh
 python collect_orthogroups.py --rescue filtered_cds_scaffolded/
 ```
 
