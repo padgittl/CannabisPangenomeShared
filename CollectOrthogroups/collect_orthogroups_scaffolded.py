@@ -24,7 +24,7 @@ def hap_to_genes(cds_file, contam, rescue_alignment=None):
             rescued_genes = set(l.split()[0] for l in f.readlines()) - contam
     else:
         rescued_genes = set()
-    return directly_predicted_genes + rescued_genes
+    return directly_predicted_genes.union(rescued_genes)
 
 
 def col_values(orthogroup_df, contours=None):
