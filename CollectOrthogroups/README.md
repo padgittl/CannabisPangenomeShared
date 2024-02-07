@@ -29,6 +29,7 @@ Steps to generate orthogroup-based collection curves (all genomes)
 ```sh
 sh download_genomes.sh
 sh download_primary_cds.sh
+sh download_orthogroups.sh
 sh merge_cds.sh
 python align_cds.py --genomes genomes/*.fasta.gz \
   --cds primary_high_confidence_cds_merged/primary_high_confidence.cds.fasta.gz \
