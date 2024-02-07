@@ -27,14 +27,13 @@ def filter_aligned_cds(
         with open(paf, 'r') as f_in, open(os.path.join(temp_dir, f'{os.path.basename(paf)}.bed'), 'w') as f_out:
             for line in f_in:
                 q_name, q_len, q_start, q_end, strand, t_name, t_len, t_start, t_end, *rest = line.split()
-                f_out.write('\t'.join((t_name, t_start, t_end, strand, q_name, ','.join((q_len, q_start, q_end, t_len, *rest))))+'\n')
+                f_out.write('\t'.join((t_name, t_start, t_end, strand, q_name, q_len, q_start, q_end, t_len, *rest))+'\n')
         BedTool(os.path.join(temp_dir, f'{os.path.basename(paf)}.bed')).intersect(
            BedTool(bed), v=True
         ).saveas(os.path.join(temp_dir, f'{os.path.basename(paf)}.non_overlapping.bed'))
         with open(os.path.join(temp_dir, f'{os.path.basename(paf)}.non_overlapping.bed'), 'r') as f_in, open(os.path.join(outdir, os.path.basename(paf)), 'w') as f_out:
             for line in f_in:
-                t_name, t_start, t_end, strand, q_name, other = line.split()
-                q_len, q_start, q_end, t_len, match, block_len, qual, *rest, cig = other.split(',')
+                t_name, t_start, t_end, strand, q_name, q_len, q_start, q_end, t_len, match, block_len, qual, *rest, cig = line.split()
                 if use_cigar:
                     match = {op: val for val, op in Cigar(cig.split(':')[-1]).merge_like_ops().items()}.get('M', 0)
                 if qual >= '60' and int(match) / int(q_len) > match_percent / 100:
