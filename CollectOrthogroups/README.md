@@ -27,9 +27,9 @@ python collect_orthogroups_scaffolded.py --rescue filtered_cds_scaffolded/
 
 Steps to generate orthogroup-based collection curves (all genomes)
 ```sh
-sh download-genomes.sh
-sh download-primary-cds.sh
-sh merge-cds.sh
+sh download_genomes.sh
+sh download_primary_cds.sh
+sh merge_cds.sh
 python align_cds.py --genomes genomes/*.fasta.gz \
   --cds primary_high_confidence_cds_merged/primary_high_confidence.cds.fasta.gz \
   --processes 2 \
