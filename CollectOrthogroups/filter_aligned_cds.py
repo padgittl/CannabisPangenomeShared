@@ -38,7 +38,7 @@ def filter_aligned_cds(
                 if use_cigar:
                     match = {op: val for val, op in Cigar(cig.split(':')[-1]).merge_like_ops().items()}.get('M', 0)
                 if qual >= '60' and int(match) / int(q_len) > match_percent / 100:
-                    f_out.write('\t'.join((q_name, q_len, q_start, q_end, strand, t_name, t_len, t_start, t_end, match, block_len, qual, *rest, cig))+'\n')
+                    f_out.write('\t'.join((q_name, q_len, q_start, q_end, strand, t_name, t_len, t_start, t_end, str(match), block_len, qual, *rest, cig))+'\n')
     # with open(paf, 'r') as f_in, open(os.path.join(outdir, os.path.basename(paf)), 'w') as f_out:
     #     for line in f_in:
     #         _, q_len, _, _, _, _, _, _, _, match, _, qual, *_, cig = line.split()
