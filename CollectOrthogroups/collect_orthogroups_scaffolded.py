@@ -102,7 +102,7 @@ def col_plot(plotting_data, output, title: str = 'Collection curve',
         location of plot legend, e.g. 'upper left', 'best', or 'outside' [best]
     """
 
-    ax = sns.lineplot(x='n_genomes', y='n_orthogroups', hue='sequence',
+    ax = sns.lineplot(x='Genomes', y='Orthogroups', hue='sequence',
                       data=plotting_data, linewidth=linewidth,
                       palette=palette, alpha=alpha)
     ax.set_title(title)
@@ -158,7 +158,7 @@ def main():
     contours = None
     col_df = pd.DataFrame(
         col_values(ortho, contours=contours),
-        columns=('n_genomes', 'n_orthogroups', 'sequence')
+        columns=('Genomes', 'Orthogroups', 'sequence')
     )
     col_df.to_csv('Csativa-collect-orthogroups.tsv', index=False, sep='\t')
     col_plot(col_df, 'Csativa-collect-orthogroups.svg',
