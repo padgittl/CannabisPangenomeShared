@@ -2,7 +2,7 @@
 
 conda environment
 ```sh
-conda create -n CollectOrthogroups -c conda-forge -c bioconda python=3.10 awscli biopython cigar minimap2 numpy pandas seaborn seqkit tabix pyfaidx pybedtools
+conda create -n CollectOrthogroups -c conda-forge -c bioconda python=3.10 awscli biopython cigar minimap2 pyarrow pandas seaborn seqkit tabix pyfaidx pybedtools
 ```
 
 Steps to generate orthogroup-based collection curves (scaffolded only)
@@ -22,7 +22,7 @@ python filter_aligned_cds.py \
   --bed primary_high_confidence_scaffolded/*.bed.gz \
   --processes 64 \
   filtered_cds_scaffolded/
-python collect_orthogroups.py --rescue filtered_cds_scaffolded/
+python collect_orthogroups_scaffolded.py --rescue filtered_cds_scaffolded/
 ```
 
 Steps to generate orthogroup-based collection curves (all genomes)
