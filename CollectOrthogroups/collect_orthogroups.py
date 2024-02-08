@@ -50,7 +50,7 @@ def col_values(orthogroup_df, contours=None):
                 (1-prod((g-s-n)/(g-n) for n in range(n_genomes)))*score_dist[s]
                 for s in range(1, g+1)
             ),
-            'pan'
+            'Pan'
         )
         if contours:
             for c in contours:
