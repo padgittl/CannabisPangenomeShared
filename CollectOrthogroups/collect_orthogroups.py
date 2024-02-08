@@ -70,7 +70,7 @@ def col_values(orthogroup_df, contours=None):
                 prod((s-n)/(g-n) for n in range(n_genomes))*score_dist[s]
                 for s in range(1, g+1)
             ),
-            'core'
+            'Core'
         )
 
 
