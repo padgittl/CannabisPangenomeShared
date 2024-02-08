@@ -22,7 +22,7 @@ python filter_aligned_cds.py \
   --bed primary_high_confidence_scaffolded/*.bed.gz \
   --processes 2 \
   filtered_cds_scaffolded/
-python collect_orthogroups_scaffolded.py --rescue filtered_cds_scaffolded/
+python collect_orthogroups_scaffolded.py --rescue
 ```
 
 Steps to generate orthogroup-based collection curves (all genomes)
@@ -35,14 +35,14 @@ python align_cds.py --genomes genomes/*/*.fasta.gz \
   --cds primary_high_confidence_cds_merged/primary_high_confidence.cds.fasta.gz \
   --processes 2 \
   aligned_cds/
-python filter_aligned_cds.py --paf aligned_cds/*.paf \
+python filter_aligned_cds.py \
   --cigar \
   --match-percent 80 \
   --paf aligned_cds/*.paf \
-  --processes 2 \
+  --bed primary_high_confidence/*/*.bed.gz \
+  --processes 64 \
   filtered_cds/
-sh download-orthogroups.sh
-python collect_orthogroups.py --rescue filtered_cds/
+python collect_orthogroups.py --rescue
 ```
 
 # Analysis of gene-based pangenome

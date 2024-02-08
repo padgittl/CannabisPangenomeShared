@@ -123,7 +123,7 @@ def col_plot(plotting_data, output, title: str = 'Collection curve',
 
 def parse_arguments():
     parser = ArgumentParser()
-    parser.add_argument('-r', '--rescue')
+    parser.add_argument('-r', '--rescue', action='store_true')
     parser.add_argument('-c', '--contours', type=int, nargs='+')
     return parser.parse_args()
 
