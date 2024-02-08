@@ -1,15 +1,15 @@
 import pandas as pd
 import os.path
 from argparse import ArgumentParser
-from scaffolded import SCAFFOLDED
+from csativa_genomes import CSATIVA_GENOMES
 from pyfaidx import Fasta
 from collections import Counter
 import seaborn as sns
 from math import prod, floor
 from scipy.stats import hypergeom
 
-PAF_DIR = 'filtered_cds_scaffolded'
-CDS_DIR = 'primary_high_confidence_scaffolded'
+PAF_DIR = 'filtered_cds'
+CDS_DIR = 'primary_high_confidence'
 HOG_TSV = 'nolans-orthofinder/Phylogenetic_Hierarchical_Orthogroups/N30.tsv'
 SINGLETONS_TSV = 'nolans-orthofinder/Orthogroups/Orthogroups_UnassignedGenes.tsv'
 LIKELY_CONTAMINANTS = 'csat.likely_contaminants.tsv'
@@ -50,7 +50,7 @@ def col_values(orthogroup_df, contours=None):
                 (1-prod((g-s-n)/(g-n) for n in range(n_genomes)))*score_dist[s]
                 for s in range(1, g+1)
             ),
-            'Pan'
+            'pan'
         )
         if contours:
             for c in contours:
@@ -70,7 +70,7 @@ def col_values(orthogroup_df, contours=None):
                 prod((s-n)/(g-n) for n in range(n_genomes))*score_dist[s]
                 for s in range(1, g+1)
             ),
-            'Core'
+            'core'
         )
 
 
@@ -129,13 +129,13 @@ def parse_arguments():
 
 def main():
     args = parse_arguments()
-    hogs = tuple(pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].dropna(how='all').index)
+    hogs = tuple(pd.read_table(HOG_TSV, index_col=0)[CSATIVA_GENOMES].dropna(how='all').index)
     gene_to_og = {
-        gene: hog for hog, gene_list in pd.read_table(HOG_TSV, index_col=0)[SCAFFOLDED].dropna(how='all').iterrows()
+        gene: hog for hog, gene_list in pd.read_table(HOG_TSV, index_col=0)[CSATIVA_GENOMES].dropna(how='all').iterrows()
         for gene in ', '.join(g for g in gene_list if (not pd.isna(g))).split(', ')
     }
     # singletons = {
-    #     gene: og for og, gene_list in pd.read_table(SINGLETONS_TSV, index_col=0, dtype=str)[SCAFFOLDED].dropna(how='all').iterrows()
+    #     gene: og for og, gene_list in pd.read_table(SINGLETONS_TSV, index_col=0, dtype=str)[CSATIVA_GENOMES].dropna(how='all').iterrows()
     #     for gene in (g for g in gene_list if (not pd.isna(g)))
     # }
     # gene_to_og.update(singletons)
@@ -147,9 +147,9 @@ def main():
                                 rescue_alignment=os.path.join(PAF_DIR, f'{hap}.paf') if args.rescue else None
                             )
                             if gene_to_og.get(g)}
-                    for hap in SCAFFOLDED}
+                    for hap in CSATIVA_GENOMES}
     ortho = pd.DataFrame(
-        {hap: [og in haps_to_ogs[hap] for og in ogs] for hap in SCAFFOLDED},
+        {hap: [og in haps_to_ogs[hap] for og in ogs] for hap in CSATIVA_GENOMES},
         index=ogs
     )
     ortho = ortho.loc[~(ortho==False).all(axis=1)]
@@ -160,10 +160,10 @@ def main():
         col_values(ortho, contours=contours),
         columns=('Genomes', 'Orthogroups', 'sequence')
     )
-    col_df.to_csv('Csativa-collect-orthogroups-scaffolded.tsv', index=False, sep='\t')
-    col_plot(col_df, 'Csativa-collect-orthogroups-scaffolded.svg', title='',
+    col_df.to_csv('Csativa-collect-orthogroups.tsv', index=False, sep='\t')
+    col_plot(col_df, 'Csativa-collect-orthogroups.svg', title='',
                  palette=(COL_COLOR_PALETTE if contours else COL_TWO_COLORS))
-    col_plot(col_df, 'Csativa-collect-orthogroups-scaffolded.pdf', title='',
+    col_plot(col_df, 'Csativa-collect-orthogroups.pdf', title='',
                  palette=(COL_COLOR_PALETTE if contours else COL_TWO_COLORS))
 
 
