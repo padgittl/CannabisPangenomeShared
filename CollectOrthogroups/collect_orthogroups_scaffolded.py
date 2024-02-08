@@ -10,8 +10,8 @@ from scipy.stats import hypergeom
 
 PAF_DIR = 'filtered_cds_scaffolded'
 CDS_DIR = 'primary_high_confidence_scaffolded'
-HOG_TSV = 'nolans-orthofinder/Phylogenetic_Hierarchical_Orthogroups/N30.tsv'
-SINGLETONS_TSV = 'nolans-orthofinder/Orthogroups/Orthogroups_UnassignedGenes.tsv'
+HOG_TSV = 'Phylogenetic_Hierarchical_Orthogroups/N30.tsv'
+SINGLETONS_TSV = 'Orthogroups/Orthogroups_UnassignedGenes.tsv'
 LIKELY_CONTAMINANTS = 'csat.likely_contaminants.tsv'
 COL_COLOR_PALETTE = 'magma_r'
 COL_TWO_COLORS = "#1E90FF", "#FFA500"
