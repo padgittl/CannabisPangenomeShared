@@ -1,7 +1,6 @@
 import pandas as pd
 import os.path
 from argparse import ArgumentParser
-from itertools import chain
 from scaffolded import SCAFFOLDED
 from pyfaidx import Fasta
 from collections import Counter
@@ -51,7 +50,7 @@ def col_values(orthogroup_df, contours=None):
                 (1-prod((g-s-n)/(g-n) for n in range(n_genomes)))*score_dist[s]
                 for s in range(1, g+1)
             ),
-            'pan'
+            'Pan'
         )
         if contours:
             for c in contours:
@@ -71,7 +70,7 @@ def col_values(orthogroup_df, contours=None):
                 prod((s-n)/(g-n) for n in range(n_genomes))*score_dist[s]
                 for s in range(1, g+1)
             ),
-            'core'
+            'Core'
         )
 
 
