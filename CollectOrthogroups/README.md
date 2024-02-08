@@ -40,7 +40,7 @@ python filter_aligned_cds.py \
   --match-percent 80 \
   --paf aligned_cds/*.paf \
   --bed primary_high_confidence/*/*.bed.gz \
-  --processes 64 \
+  --processes 2 \
   filtered_cds/
 python collect_orthogroups.py --rescue
 ```
