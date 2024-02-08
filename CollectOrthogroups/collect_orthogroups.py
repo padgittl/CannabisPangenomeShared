@@ -142,7 +142,7 @@ def main():
     ogs = hogs #+ tuple(singletons.values())
     haps_to_ogs = {hap: {gene_to_og[g]
                             for g in hap_to_genes(
-                                os.path.join(CDS_DIR, f'{hap}.primary_high_confidence.cds.fasta'),
+                                os.path.join(CDS_DIR, hap, f'{hap}.primary_high_confidence.cds.fasta'),
                                 set(pd.read_table(LIKELY_CONTAMINANTS)['GID']),
                                 rescue_alignment=os.path.join(PAF_DIR, f'{hap}.paf') if args.rescue else None
                             )
