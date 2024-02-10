@@ -1,0 +1,1 @@
+pankmer index -t 2 -g genomes_scaffolded/ -o csativa_index_scaffolded.tar
