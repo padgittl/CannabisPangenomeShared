@@ -16,7 +16,7 @@ def parse_arguments():
 
 args = parse_arguments()
 sizes = pankmer.anchor.get_chromosome_sizes_from_anchor(
-    os.path.join('varin_genomes', f'{args.sample}.softmasked.fasta.gz')
+    os.path.join('varin_genomes', f'{args.sample}.softmasked.fasta')
 )
 os.mkdir(os.path.join('anchor', args.sample))
 for _, (chrom, size) in islice(sizes.iterrows(), 10):
