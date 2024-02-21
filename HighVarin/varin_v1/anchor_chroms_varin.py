@@ -23,7 +23,7 @@ for _, (chrom, size) in islice(sizes.iterrows(), 10):
     print(chrom, size)
     pankmer.anchor_region(
         'varin_x_subset',
-        anchor=os.path.join('varin_genomes', f'{args.sample}.softmasked.fasta.gz'),
+        anchor=os.path.join('varin_genomes', f'{args.sample}.softmasked.fasta'),
         coords=f'{chrom}:1-{size}',
         output_file=os.path.join('anchor', args.sample, f'{chrom}.bdg.gz'),
         bgzip=True,
