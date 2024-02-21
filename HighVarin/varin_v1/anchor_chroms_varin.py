@@ -11,7 +11,7 @@ from itertools import islice
 def parse_arguments():
     parser = ArgumentParser()
     parser.add_argument('sample')
-    parser.add_argument('--processes', type=int, default=1)
+    parser.add_argument('-t', '--threads', type=int, default=1)
     return parser.parse_args()
 
 args = parse_arguments()
