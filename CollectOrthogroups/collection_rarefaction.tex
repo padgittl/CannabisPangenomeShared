@@ -1,0 +1,71 @@
+\title{Calculation of collector's curves}
+\author{}
+\date{}
+
+\documentclass[12pt]{scrartcl}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\urlstyle{same}
+\begin{document}
+\maketitle
+
+\section*{Haplotypes, orthogroups, and scores}
+
+In pangenomics, collection or rarefaction curves show the relationship of the number of haplotypes (here $H$) to the number of gene families or orthogroups (here $X$).
+
+Given the $X$ orthogroups distributed across $H$ haplotypes, let the \emph{score} $s_x \in [0,H]$ of an orthogroup $x$ be the number of haplotypes in which $x$ is present. For any score $s$ let $P(s)$ be the number of orthogroups with score equal to $s$. 
+
+\begin{align}
+    P(s) = \sum_{x \in x_0 ... x_X} I_{s_x=s}(x)
+\end{align}
+
+Where $I_{s_x=s} : \{x_0 ... x_X\} \rightarrow \{0,1\}$ is the indicator function on $\{x \in x_0 ... x_X : s_x=s\}$. 
+
+\section*{The collector's curves}
+
+The collector's curve $C(h):[1,H] \rightarrow [0,X]$ is the expected number of orthogroups that will be present in a subset of $h$ haplotypes randomly drawn from the total set of $H$. It can be calculated by:
+
+\begin{align}
+    C(h) = \sum_{s \in 1...H} 1 - P(s)\prod_{i \in 0...h-1}\frac{H-s-i}{H-i}
+\end{align}
+
+The expected number of \emph{core} orthogroups $\hat{C}(h)$ can be estimated by
+
+\begin{align}
+    \hat{C}(h) = \sum_{s \in 1...H} P(s)\prod_{i \in 0...h-1}\frac{s-i}{H-i}
+\end{align}
+
+Each of these  is a special case of a general formula for the expected number of orthogroups with a score of at least $n$, based on the hypergeometric survival function:
+
+\begin{align}
+    C_n(h) = \sum_{s \in 1...H}P(s)S_\text{hyp}(n, H, s, h)
+\end{align}
+
+Where $S_\text{hyp}(n, H, s, h)$ is the \href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.hypergeom.html}{hypergeometric survival function}:
+
+\begin{align}
+    S_\text{hyp}(n, H, s, h) = 1 - CDF_\text{hyp}(n, H, s, h)
+\end{align}
+
+So defined, we can see that the pan-genome collector's curve $C(h)$ is equivalent to $C_1(h)$, while the core genome collector's curve :
+\begin{align}
+    C(h) = C_1(h) \\
+    \hat{C}(h) = C_h(h)
+\end{align}
+
+\section*{$k$-mer based collector's curves}
+
+The definition of the collector's curve is agnostic to the unit of genomic sequence, so the calculation of a $k$-mer based curve is identical to the orthogroup based curve, excepting that $X$ will be the number of $k$-mers and $x$ will represent a $k$-mer, rather than an orthogroup.
+
+
+\end{document}
+This is never printed
+
+It  1\footnote[1]{$x_{ij}$
+could also be a continuous value} 
