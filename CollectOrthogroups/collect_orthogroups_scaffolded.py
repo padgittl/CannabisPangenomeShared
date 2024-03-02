@@ -153,7 +153,7 @@ def main():
         index=ogs
     )
     ortho = ortho.loc[~(ortho==False).all(axis=1)]
-    ortho.to_csv('orthogroup_table.tsv', sep='\t')
+    ortho.to_csv('orthogroup_table_scaffolded.tsv', sep='\t')
 
     contours = args.contours
     col_df = pd.DataFrame(
