@@ -47,10 +47,28 @@ Each of these  is a special case of a general formula for the expected number of
     C_n(h) = \sum_{s \in 1...H}P(s)S_\text{hyp}(n, H, s, h)
 \end{align}
 
-Where $S_\text{hyp}(n, H, s, h)$ is the \href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.hypergeom.html}{hypergeometric survival function}:
+Where $S_\text{hyp}(n, H, s, h)$ is the \href{https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.hypergeom.html}{hypergeometric survival function} or the hypergeometric cumulative distribution function subtracted from 1:
 
 \begin{align}
-    S_\text{hyp}(n, H, s, h) = 1 - CDF_\text{hyp}(n, H, s, h)
+    S_\text{hyp}(n, H, s, h) = 1 - \text{CDF}_\text{hyp}(n, H, s, h)
+\end{align}
+
+Where for clarity, the hypergeometric probability mass function is:
+
+\begin{align}
+    \text{PMF}_\text{hyp}(n, H, s, h) = \frac{\binom{h}{n}\binom{H-s}{h-n}}{\binom{H}{h}}
+\end{align}
+
+With binomial coefficients defined as:
+
+\begin{align}
+    \binom{h}{n} = \frac{h!}{n!(h-n)!}
+\end{align}
+
+And, conventionally, the cumulative distribution function is:
+
+\begin{align}
+    \text{CDF}_\text{hyp}(n, H, s, h) = \sum_{n_i \leq n} \text{PMF}_\text{hyp}(n_i, H, s, h)
 \end{align}
 
 So defined, we can see that the pan-genome collector's curve $C(h)$ is equivalent to $C_1(h)$, while the core genome collector's curve :
