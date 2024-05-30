@@ -7,7 +7,7 @@
 ## Preprint on bioRxiv:
 https://www.biorxiv.org/content/10.1101/2024.05.21.595196v1
 
-## FigShare project page:
+## FigShare project pages:
 https://doi.org/10.25452/figshare.plus.c.7248427.v1
 
 https://figshare.com/projects/Cannabis_Pangenome/205555
