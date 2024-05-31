@@ -4,10 +4,10 @@
 https://www.biorxiv.org/content/10.1101/2024.05.21.595196v1
 
 ## FigShare project pages:
-### Scaffolded and unscaffolded genomes; genome annotations
+### Scaffolded and unscaffolded genomes and annotations
 https://doi.org/10.25452/figshare.plus.c.7248427.v1
 
-### Scaffolded genomes; supplementary materials
+### Scaffolded genomes and annotations; supplementary materials
 https://figshare.com/projects/Cannabis_Pangenome/205555
 
 ## Michael lab genomic resources:
