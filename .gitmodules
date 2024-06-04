@@ -23,5 +23,5 @@
 	url = git@github.com:RCLynch414/Cannapanna-Figure-2-panels.git
 	branch = main
 [submodule "csat_sourmash_scaffold"]
-	path = csat_sourmash_scaffold
+	path = nallsing/csat_sourmash_scaffold
 	url = https://github.com/nallsing-salk/csat_sourmash_scaffold
