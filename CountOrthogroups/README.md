@@ -33,7 +33,7 @@ python count_orthogroups.py orthogroup_table_scaffolded.tsv | tail -n 2
 78      9010.0  Core
 ```
 
-To address questions of "shell," "cloud," "dispensable," and "private", you can use the `--contours` argument. For example, to see how many orthogroups are present in *at least 50% of the samples:
+To address questions of "shell," "cloud," "dispensable," and "private", you can use the `--contours` argument. For example, to see how many orthogroups are present in *at least 50%* of the samples:
 
 ```sh
 python count_orthogroups.py orthogroup_table_scaffolded.tsv --contours 50 | tail -n 3
