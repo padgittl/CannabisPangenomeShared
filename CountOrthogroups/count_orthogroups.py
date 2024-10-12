@@ -9,7 +9,8 @@ from math import prod, floor
 def parse_arguments():
     parser = ArgumentParser(description = "count orthogroups")
     parser.add_argument('orthogroup_table')
-    parser.add_argument('-c', '--contours', type=int, nargs='+')
+    parser.add_argument('-c', '--contours', type=int, nargs='+', default=[])
+    parser.add_argument('-f', '--contours-float', type=float, nargs='+', default=[])
     return parser.parse_args()
 
 
@@ -64,10 +65,10 @@ def col_values(orthogroup_df, contours=None):
 def main():
     args = parse_arguments()
     ortho = pd.read_table(args.orthogroup_table, index_col=0)
-    contours = args.contours
+    contours = args.contours + args.contours_float
     col_df = pd.DataFrame(
         col_values(ortho, contours=contours),
-        columns=('Genomes', 'Orthogroups', 'sequence')
+        columns=('Genomes', 'Orthogroups', 'Level')
     )
     col_df.to_csv(sys.stdout, index=False, sep='\t')
 
