@@ -24,11 +24,11 @@ def filter_aligned_cds(
         match_percent: int = 80
     ):
     with tempfile.TemporaryDirectory() as temp_dir:
-        with open(paf, 'r') as f_in, open(os.path.join(temp_dir, f'{os.path.basename(paf)}.bed'), 'w') as f_out:
+        with open(paf, 'r') as f_in, open(os.path.join(outdir, f'{os.path.basename(paf)}.bed'), 'w') as f_out:
             for line in f_in:
                 q_name, q_len, q_start, q_end, strand, t_name, t_len, t_start, t_end, *rest = line.split()
                 f_out.write('\t'.join((t_name, t_start, t_end, strand, q_name, ','.join((q_len, q_start, q_end, t_len, *rest))))+'\n')
-        BedTool(os.path.join(temp_dir, f'{os.path.basename(paf)}.bed')).intersect(
+        BedTool(os.path.join(outdir, f'{os.path.basename(paf)}.bed')).intersect(
            BedTool(bed), v=True
         ).saveas(os.path.join(outdir, f'{os.path.basename(paf)}.non_overlapping.bed'))
         with open(os.path.join(outdir, f'{os.path.basename(paf)}.non_overlapping.bed'), 'r') as f_in, open(os.path.join(outdir, os.path.basename(paf)), 'w') as f_out:
