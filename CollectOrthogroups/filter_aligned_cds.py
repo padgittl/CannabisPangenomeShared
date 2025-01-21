@@ -30,8 +30,8 @@ def filter_aligned_cds(
                 f_out.write('\t'.join((t_name, t_start, t_end, strand, q_name, ','.join((q_len, q_start, q_end, t_len, *rest))))+'\n')
         BedTool(os.path.join(temp_dir, f'{os.path.basename(paf)}.bed')).intersect(
            BedTool(bed), v=True
-        ).saveas(os.path.join(temp_dir, f'{os.path.basename(paf)}.non_overlapping.bed'))
-        with open(os.path.join(temp_dir, f'{os.path.basename(paf)}.non_overlapping.bed'), 'r') as f_in, open(os.path.join(outdir, os.path.basename(paf)), 'w') as f_out:
+        ).saveas(os.path.join(outdir, f'{os.path.basename(paf)}.non_overlapping.bed'))
+        with open(os.path.join(outdir, f'{os.path.basename(paf)}.non_overlapping.bed'), 'r') as f_in, open(os.path.join(outdir, os.path.basename(paf)), 'w') as f_out:
             for line in f_in:
                 t_name, t_start, t_end, strand, q_name, other = line.split()
                 q_len, q_start, q_end, t_len, match, block_len, qual, *rest, cig = other.split(',')
