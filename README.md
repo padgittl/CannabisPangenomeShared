@@ -18,14 +18,23 @@ Cannabis sativa is a globally significant seed-oil, fiber, and drug-producing pl
 
 ### Fig.1
 
+Seven panels: A-G
+
 ### Fig.2
+
+Twelve panels: A-L
 
 ### Fig.3
 
+Panels A-D
+
 ### Fig.4
+
+Panels A-E
 
 ### Fig.5
 
+Panels A-F
 
 
 # Cannabis Pangenome
