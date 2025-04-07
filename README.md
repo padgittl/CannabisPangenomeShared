@@ -14,6 +14,11 @@ Cannabis sativa is a globally significant seed-oil, fiber, and drug-producing pl
 
 **Michael lab genomic resources:** https://resources.michael.salk.edu/root/home.html
 
+**Scaffolded and unscaffolded genomes and annotations, figshare:** https://doi.org/10.25452/figshare.plus.c.7248427.v1
+
+**Scaffolded genomes and annotations; supplementary materials, figshare:** https://figshare.com/projects/Cannabis_Pangenome/205555
+
+
 ## Figure materials
 
 ### Fig.1
