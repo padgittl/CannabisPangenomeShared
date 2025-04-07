@@ -21,6 +21,17 @@ Cannabis sativa is a globally significant seed-oil, fiber, and drug-producing pl
 
 ## Figure materials
 
+### Cloning the project and it's submodules
+
+Git documentation: https://git-scm.com/book/en/v2/Git-Tools-Submodules
+
+```
+git clone git@github.com:padgittl/CannabisPangenomeShared.git
+cd CannabisPangenomeShared
+git submodule init
+git submodule update
+```
+
 ### Fig.1
 
 Seven panels: A-G
@@ -40,7 +51,6 @@ Panels A-E
 ### Fig.5
 
 Panels A-F
-
 
 # Cannabis Pangenome
 
