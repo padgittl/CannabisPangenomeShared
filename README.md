@@ -44,19 +44,6 @@ Panels A-F
 
 # Cannabis Pangenome
 
-## Preprint on bioRxiv
-https://www.biorxiv.org/content/10.1101/2024.05.21.595196v1
-
-## FigShare project pages
-### Scaffolded and unscaffolded genomes and annotations
-https://doi.org/10.25452/figshare.plus.c.7248427.v1
-
-### Scaffolded genomes and annotations; supplementary materials
-https://figshare.com/projects/Cannabis_Pangenome/205555
-
-## Michael lab genomic resources
-https://resources.michael.salk.edu/root/home.html
-
 ## GitHub repo for transposable element analysis
 https://github.com/padgittl/CannabisPangenomeTransposableElements
 
