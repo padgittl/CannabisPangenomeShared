@@ -37,21 +37,25 @@ git submodule update
 Seven panels: A-G
 </details>
 
-### Fig.2
-
+<details>   
+<summary>Fig.2</summary>
 Twelve panels: A-L
+</details>
 
-### Fig.3
+<details>
+<summary>Fig.3</summary>
+Four panels:Panels A-D
+</details>
 
-Panels A-D
-
-### Fig.4
-
+<details>
+<summary>Fig.4</summary>
 Panels A-E
+</details>
 
-### Fig.5
-
+<details> 
+<summary>Fig.5</summary>
 Panels A-F
+</details>
 
 # Cannabis Pangenome
 
