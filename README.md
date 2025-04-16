@@ -36,9 +36,9 @@ git submodule update
 <summary>Fig.1. Cannabis pangenome architecture uncovers at least five distinct populations.</summary>
 Seven panels: A-G
 
-A. ViningLab/CannabisPangenome/Fig1A_SynChrom/
-C, D. CollectOrthogroups/README.md and CountOrthogroups/README.md
-E. padgitt/CannabisPangenomeAnalyses/CoreDispensableGenes/README.md
+A. ViningLab/CannabisPangenome/Fig1A_SynChrom/  
+C, D. CollectOrthogroups/README.md and CountOrthogroups/README.md  
+E. padgitt/CannabisPangenomeAnalyses/CoreDispensableGenes/README.md  
 </details>
 
 <details>   
