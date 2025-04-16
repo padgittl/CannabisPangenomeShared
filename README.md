@@ -41,29 +41,29 @@ E. padgitt/CannabisPangenomeAnalyses/CoreDispensableGenes/README.md<br>
 </details>
 
 <details>   
-<summary><h4>Fig.2. Transposable elements shape the cannabis pangenome.</h4></summary>
+<summary><h3>Fig.2. Transposable elements shape the cannabis pangenome.</h3></summary>
 Twelve panels: A-L<br>
 padgittl/CannabisPangenomeTransposableElements/README.md<br>
 </details>
 
 <details>
-<summary>Fig.3. Structural variants occur at different frequencies in populations and are non-randomly distributed across the genome.</summary>
-Four panels: Panels A-D  
+<summary><h3>Fig.3. Structural variants occur at different frequencies in populations and are non-randomly distributed across the genome.</h3></summary>
+Four panels: Panels A-D<br>
 </details>
 
 <details>
-<summary>Fig.4. The cannabinoid pathway is domesticated yet, but shows contrasting patterns of genetic diversity and synteny.</summary>
-Five panels: Panels A-E  
-A. amamerto/cannabis_pangenome/copynumber_counting/run.count_copynumbers.sh  
-C. amamerto/cannabis_pangenome/synthase_cassettes/run.draw_synthase_cassettes.sh  
-D. ViningLab/CannabisPangenome/Fig5D_BUSCOchrom7/BUSCOchrom7.Rmd  
-E. padgittl/CannabisPangenomeTransposableElements/Figure5E_teSynthaseTree/createFigure.sh  
+<summary><h3>Fig.4. The cannabinoid pathway is domesticated yet, but shows contrasting patterns of genetic diversity and synteny.</h3></summary>
+Five panels: Panels A-E<br>
+A. amamerto/cannabis_pangenome/copynumber_counting/run.count_copynumbers.sh<br>
+C. amamerto/cannabis_pangenome/synthase_cassettes/run.draw_synthase_cassettes.sh<br>
+D. ViningLab/CannabisPangenome/Fig5D_BUSCOchrom7/BUSCOchrom7.Rmd<br>
+E. padgittl/CannabisPangenomeTransposableElements/Figure5E_teSynthaseTree/createFigure.sh<br>
 </details>
 
 <details> 
-<summary>Fig.5. Acyl-lipid thioesterase (ALT) gene trans duplication (TD) and diversification explains varin cannabinoid phenotype in cannabis. </summary>
-Panels A-F  
-HighVarin/  
+<summary><h3>Fig.5. Acyl-lipid thioesterase (ALT) gene trans duplication (TD) and diversification explains varin cannabinoid phenotype in cannabis.</h3></summary>
+Panels A-F<br>
+HighVarin/<br>
 </details>
 
 # Cannabis Pangenome
