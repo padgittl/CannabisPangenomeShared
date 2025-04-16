@@ -33,7 +33,7 @@ git submodule update
 ```
 
 <details>
-<summary><h3>Fig.1. Cannabis pangenome architecture uncovers at least five distinct populations.</h3></summary>
+<summary>Fig.1. Cannabis pangenome architecture uncovers at least five distinct populations.</summary>
 Seven panels: A-G<br>
 A. ViningLab/CannabisPangenome/Fig1A_SynChrom/Ideo_plot.Rmd<br>
 C, D. CollectOrthogroups/README.md and CountOrthogroups/README.md<br>
@@ -41,18 +41,18 @@ E. padgitt/CannabisPangenomeAnalyses/CoreDispensableGenes/README.md<br>
 </details>
 
 <details>   
-<summary><h3>Fig.2. Transposable elements shape the cannabis pangenome.</h3></summary>
+<summary>Fig.2. Transposable elements shape the cannabis pangenome.</summary>
 Twelve panels: A-L<br>
 padgittl/CannabisPangenomeTransposableElements/README.md<br>
 </details>
 
 <details>
-<summary><h3>Fig.3. Structural variants occur at different frequencies in populations and are non-randomly distributed across the genome.</h3></summary>
+<summary>Fig.3. Structural variants occur at different frequencies in populations and are non-randomly distributed across the genome.</summary>
 Four panels: Panels A-D<br>
 </details>
 
 <details>
-<summary><h3>Fig.4. The cannabinoid pathway is domesticated yet, but shows contrasting patterns of genetic diversity and synteny.</h3></summary>
+<summary>Fig.4. The cannabinoid pathway is domesticated yet, but shows contrasting patterns of genetic diversity and synteny.</summary>
 Five panels: Panels A-E<br>
 A. amamerto/cannabis_pangenome/copynumber_counting/run.count_copynumbers.sh<br>
 C. amamerto/cannabis_pangenome/synthase_cassettes/run.draw_synthase_cassettes.sh<br>
@@ -61,7 +61,7 @@ E. padgittl/CannabisPangenomeTransposableElements/Figure5E_teSynthaseTree/create
 </details>
 
 <details> 
-<summary><h3>Fig.5. Acyl-lipid thioesterase (ALT) gene trans duplication (TD) and diversification explains varin cannabinoid phenotype in cannabis.</h3></summary>
+<summary>Fig.5. Acyl-lipid thioesterase (ALT) gene trans duplication (TD) and diversification explains varin cannabinoid phenotype in cannabis.</summary>
 Panels A-F<br>
 HighVarin/<br>
 </details>
