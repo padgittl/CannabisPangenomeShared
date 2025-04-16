@@ -2,10 +2,6 @@
 	path = ViningLab/CannabisPangenome
 	url = https://github.com/ViningLab/CannabisPangenome.git
 	branch = main
-[submodule "padgittl/CannabisPangenomeTerpeneSynthases"]
-	path = padgittl/CannabisPangenomeTerpeneSynthases
-	url = git@github.com:padgittl/CannabisPangenomeTerpeneSynthases.git
-	branch = main
 [submodule "jkitony/EH23_Expression"]
 	path = jkitony/EH23_Expression
 	url = git@github.com:jkitony/EH23_Expression.git
