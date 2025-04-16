@@ -32,9 +32,10 @@ git submodule init
 git submodule update
 ```
 
-### Fig.1
-
+<details>
+<summary>Fig.1</summary>
 Seven panels: A-G
+</details>
 
 ### Fig.2
 
