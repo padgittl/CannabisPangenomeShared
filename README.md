@@ -36,7 +36,7 @@ git submodule update
 <summary>Fig.1. Cannabis pangenome architecture uncovers at least five distinct populations.</summary>
 Seven panels: A-G
 
-A. ViningLab/CannabisPangenome/Fig1A_SynChrom/  
+A. ViningLab/CannabisPangenome/Fig1A_SynChrom/Ideo_plot.Rmd  
 C, D. CollectOrthogroups/README.md and CountOrthogroups/README.md  
 E. padgitt/CannabisPangenomeAnalyses/CoreDispensableGenes/README.md  
 </details>
@@ -44,6 +44,7 @@ E. padgitt/CannabisPangenomeAnalyses/CoreDispensableGenes/README.md
 <details>   
 <summary>Fig.2. Transposable elements shape the cannabis pangenome.</summary>
 Twelve panels: A-L
+padgittl/CannabisPangenomeTransposableElements/README.md
 </details>
 
 <details>
@@ -53,12 +54,17 @@ Four panels: Panels A-D
 
 <details>
 <summary>Fig.4. The cannabinoid pathway is domesticated yet, but shows contrasting patterns of genetic diversity and synteny.</summary>
-Panels A-E
+Five panels: Panels A-E
+A. amamerto/cannabis_pangenome/copynumber_counting/run.count_copynumbers.sh
+C. amamerto/cannabis_pangenome/synthase_cassettes/run.draw_synthase_cassettes.sh
+D. ViningLab/CannabisPangenome/Fig5D_BUSCOchrom7/BUSCOchrom7.Rmd
+E. padgittl/CannabisPangenomeTransposableElements/Figure5E_teSynthaseTree/createFigure.sh
 </details>
 
 <details> 
 <summary>Fig.5. Acyl-lipid thioesterase (ALT) gene trans duplication (TD) and diversification explains varin cannabinoid phenotype in cannabis. </summary>
 Panels A-F
+HighVarin/
 </details>
 
 # Cannabis Pangenome
