@@ -25,3 +25,6 @@
 [submodule "csat_sourmash_scaffold"]
 	path = nallsing/csat_sourmash_scaffold
 	url = https://github.com/nallsing-salk/csat_sourmash_scaffold
+[submodule "padgittl/CannabisPangenomeAnalyses"]
+	path = padgittl/CannabisPangenomeAnalyses
+	url = git@github.com:padgittl/CannabisPangenomeAnalyses.git
