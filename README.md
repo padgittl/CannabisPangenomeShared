@@ -41,9 +41,9 @@ E. padgitt/CannabisPangenomeAnalyses/CoreDispensableGenes/README.md<br>
 </details>
 
 <details>   
-<summary>Fig.2. Transposable elements shape the cannabis pangenome.</summary>
-Twelve panels: A-L  
-padgittl/CannabisPangenomeTransposableElements/README.md  
+<summary><h4>Fig.2. Transposable elements shape the cannabis pangenome.</h4></summary>
+Twelve panels: A-L<br>
+padgittl/CannabisPangenomeTransposableElements/README.md<br>
 </details>
 
 <details>
