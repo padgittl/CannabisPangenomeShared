@@ -34,8 +34,7 @@ git submodule update
 
 <details>
 <summary>Fig.1. Cannabis pangenome architecture uncovers at least five distinct populations.</summary>
-Seven panels: A-G
-
+Seven panels: A-G  
 A. ViningLab/CannabisPangenome/Fig1A_SynChrom/Ideo_plot.Rmd  
 C, D. CollectOrthogroups/README.md and CountOrthogroups/README.md  
 E. padgitt/CannabisPangenomeAnalyses/CoreDispensableGenes/README.md  
@@ -43,28 +42,28 @@ E. padgitt/CannabisPangenomeAnalyses/CoreDispensableGenes/README.md
 
 <details>   
 <summary>Fig.2. Transposable elements shape the cannabis pangenome.</summary>
-Twelve panels: A-L
-padgittl/CannabisPangenomeTransposableElements/README.md
+Twelve panels: A-L  
+padgittl/CannabisPangenomeTransposableElements/README.md  
 </details>
 
 <details>
 <summary>Fig.3. Structural variants occur at different frequencies in populations and are non-randomly distributed across the genome.</summary>
-Four panels: Panels A-D
+Four panels: Panels A-D  
 </details>
 
 <details>
 <summary>Fig.4. The cannabinoid pathway is domesticated yet, but shows contrasting patterns of genetic diversity and synteny.</summary>
-Five panels: Panels A-E
-A. amamerto/cannabis_pangenome/copynumber_counting/run.count_copynumbers.sh
-C. amamerto/cannabis_pangenome/synthase_cassettes/run.draw_synthase_cassettes.sh
-D. ViningLab/CannabisPangenome/Fig5D_BUSCOchrom7/BUSCOchrom7.Rmd
-E. padgittl/CannabisPangenomeTransposableElements/Figure5E_teSynthaseTree/createFigure.sh
+Five panels: Panels A-E  
+A. amamerto/cannabis_pangenome/copynumber_counting/run.count_copynumbers.sh  
+C. amamerto/cannabis_pangenome/synthase_cassettes/run.draw_synthase_cassettes.sh  
+D. ViningLab/CannabisPangenome/Fig5D_BUSCOchrom7/BUSCOchrom7.Rmd  
+E. padgittl/CannabisPangenomeTransposableElements/Figure5E_teSynthaseTree/createFigure.sh  
 </details>
 
 <details> 
 <summary>Fig.5. Acyl-lipid thioesterase (ALT) gene trans duplication (TD) and diversification explains varin cannabinoid phenotype in cannabis. </summary>
-Panels A-F
-HighVarin/
+Panels A-F  
+HighVarin/  
 </details>
 
 # Cannabis Pangenome
