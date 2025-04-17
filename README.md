@@ -66,10 +66,23 @@ Panels A-F<br>
 HighVarin/<br>
 </details>
 
-# Cannabis Pangenome
+# Cannabis Pangenome Workflow and Analyses
 
-## GitHub repo for transposable element analysis
+## Genome scaffolding
+https://github.com/nallsing-salk/csat_sourmash_scaffold
+
+## Pangenome analyses and visualizations
+https://github.com/ViningLab/CannabisPangenome
+
+## Cannabis population analysis
+https://github.com/RCLynch414/Cannapanna-Figure-2-panels
+
+## Transposable element analysis
 https://github.com/padgittl/CannabisPangenomeTransposableElements
 
-## GitHub repo for pangenome analyses and visualizations
-https://github.com/ViningLab/CannabisPangenome
+## Structural variant identification
+https://github.com/RCLynch414/SYRI_vcf.sh
+
+## Cannabinoid synthase analysis
+https://github.com/amamerto/cannabis_pangenome
+
