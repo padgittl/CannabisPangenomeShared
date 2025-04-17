@@ -74,6 +74,9 @@ https://github.com/nallsing-salk/csat_sourmash_scaffold
 ## Pangenome analyses and visualizations
 https://github.com/ViningLab/CannabisPangenome
 
+## Graph pangenome comparison
+https://github.com/padgittl/CannabisPangenomeAnalyses/tree/main/GraphPangenomeComparison
+
 ## Population analysis
 https://github.com/RCLynch414/Cannapanna-Figure-2-panels
 
@@ -86,3 +89,5 @@ https://github.com/RCLynch414/SYRI_vcf.sh
 ## Cannabinoid synthase analysis
 https://github.com/amamerto/cannabis_pangenome
 
+## Sex chromosome analyses
+https://github.com/padgittl/CannabisPangenomeAnalyses/tree/main/SexChromosomes
