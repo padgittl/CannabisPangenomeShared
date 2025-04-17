@@ -74,7 +74,7 @@ https://github.com/nallsing-salk/csat_sourmash_scaffold
 ## Pangenome analyses and visualizations
 https://github.com/ViningLab/CannabisPangenome
 
-## Cannabis population analysis
+## Population analysis
 https://github.com/RCLynch414/Cannapanna-Figure-2-panels
 
 ## Transposable element analysis
